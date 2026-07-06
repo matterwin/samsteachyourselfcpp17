@@ -1,0 +1,181 @@
+\contentsline {section}{\numberline {1}Getting Started}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}History of C++}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Programming a C++ Application}{6}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Steps to Generating an Executable}{6}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Programming Your First C++ Application}{7}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}QA}{9}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Quiz}{10}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Exercies}{11}{subsection.1.5}%
+\contentsline {section}{\numberline {2}The Anatomy of a C++ Program}{12}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Parts of the Hello World Program}{12}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Preprocessor Directive \#include}{13}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Body of Your Program main()}{14}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Returning a Value}{15}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Namespaces}{16}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Functions in C++}{18}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Basic Input Using std::cin and Output using std::cout}{20}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}QA}{21}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Quiz}{22}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Exercises}{23}{subsection.2.10}%
+\contentsline {section}{\numberline {3}Using Variables, Declaring Constants}{24}{section.3}%
+\contentsline {subsection}{\numberline {3.1}What Is a Variable?}{24}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Memory and Addressing}{24}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Declaring Variables to Access and Use Memory}{25}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Declaring and Initializing Multiple Variables of a Type}{26}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Scope of a Variable}{27}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}Global Variables}{28}{subsubsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.2}Common Compiler-Supported C++ Variable Types}{29}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Signed vs Unsigned integers}{30}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Signed integer types: short, int, long, and long long}{32}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Unsigned integer types: unsigned short, unsigned int, unsigned long, unsigned long long}{33}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Integer Overflow}{34}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Floating-Point types \texttt {float} and \texttt {double}}{35}{subsubsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}Size of a Variable using sizeof}{37}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Automatic Type Inference Using auto}{38}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}typdef and/or using to Substitute a Variable's Type}{39}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}What is a Constant?}{40}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Literal constants}{40}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Declaring Variables as Constants Using const}{42}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Constant Expression Using constexpr}{43}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}Enumerations}{45}{subsubsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.5}Defining Constants Using \#define}{47}{subsubsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.7}Keywords that Cannot be Used as Variable or Constant Names}{48}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}QA}{49}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Quiz}{50}{subsection.3.9}%
+\contentsline {section}{\numberline {4}Managing Arrays and Strings}{52}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What is an Array?}{52}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}The Need for Arrays}{53}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}How Data Is Stored in an Array}{54}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Accessing Data Stored in an Array}{55}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}Modifying Data Stored in an Array}{56}{subsubsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.2}Multidimensional Arrays}{57}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Dynamic Arrays}{58}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}C-style Character Strings}{60}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Difference between \texttt {'\textbackslash n'} and \texttt {std::endl}}{61}{subsubsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.5}C++ Strings: std::string}{62}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}QA}{63}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Quiz}{64}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Working with Expressions, Statements, and Operators}{66}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Statements}{66}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Compound Statements or Blocks}{67}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Using Operators}{68}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Assignment Operator (=)}{68}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}L-vales and R-values}{68}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Operators to Add (+), Subtract(-), Multiply(* or $<<$), Divide(/ or $>>$), and Modulo(\%)}{69}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Operators to Increment(++) and Decrement(--)}{70}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}Equality Operators (==) and (!=)}{71}{subsubsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.6}Relational Operators}{73}{subsubsection.5.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.7}Logical Operations NOT, AND, OR, and XOR}{74}{subsubsection.5.3.7}%
+\contentsline {subsubsection}{\numberline {5.3.8}Bitwise Operators: NOT (\texttt {\~}), AND (\&), OR (\texttt {|}), XOR (\texttt {\^})}{75}{subsubsection.5.3.8}%
+\contentsline {subsubsection}{\numberline {5.3.9}Bitwise right shift $>>$ and left shift $<<$}{76}{subsubsection.5.3.9}%
+\contentsline {subsubsection}{\numberline {5.3.10}Compound Assignment Operators}{78}{subsubsection.5.3.10}%
+\contentsline {subsubsection}{\numberline {5.3.11}Using sizeof Operator}{79}{subsubsection.5.3.11}%
+\contentsline {subsubsection}{\numberline {5.3.12}Operator Precedence}{80}{subsubsection.5.3.12}%
+\contentsline {subsection}{\numberline {5.4}QA}{81}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Quiz}{82}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Controlling Program Flow}{84}{section.6}%
+\contentsline {section}{\numberline {7}Organizing Code with Functions}{84}{section.7}%
+\contentsline {section}{\numberline {8}Pointers and References}{86}{section.8}%
+\contentsline {subsection}{\numberline {8.1}What is a Pointer?}{86}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}Declaring a Pointer}{87}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.2}Determing the Address of a Variable Using the Reference Operator (\&)}{88}{subsubsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.3}Access Pointer Data Using the Dereference Operator (*)}{89}{subsubsection.8.1.3}%
+\contentsline {subsubsection}{\numberline {8.1.4}What is sizeof() a Pointer?}{90}{subsubsection.8.1.4}%
+\contentsline {subsection}{\numberline {8.2}Dynamic Memory Allocation}{91}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Using new and delete or delete[]}{91}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Using malloc, realloc, etc and free}{92}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Operators vs Functions vs constexpr}{96}{subsubsection.8.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.4}Operator Overloading Examples (Unary, Binary, and Ternary-like)}{99}{subsubsection.8.2.4}%
+\contentsline {subsubsection}{\numberline {8.2.5}Incrementing (++) and Decrementing ($--$ on Pointers)}{102}{subsubsection.8.2.5}%
+\contentsline {subsubsection}{\numberline {8.2.6}Using the const keyword on Pointers}{104}{subsubsection.8.2.6}%
+\contentsline {subsubsection}{\numberline {8.2.7}Passing by ref C vs C++}{106}{subsubsection.8.2.7}%
+\contentsline {subsubsection}{\numberline {8.2.8}Clarification for pointer declarations}{107}{subsubsection.8.2.8}%
+\contentsline {subsubsection}{\numberline {8.2.9}Passing Pointers to Functions}{110}{subsubsection.8.2.9}%
+\contentsline {subsubsection}{\numberline {8.2.10}Pointers in Static vs Dynamic Memory}{111}{subsubsection.8.2.10}%
+\contentsline {subsection}{\numberline {8.3}Common Programming Mistakes when using Pointers}{113}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}References}{114}{subsection.8.4}%
+\contentsline {subsubsection}{\numberline {8.4.1}References as Function Parameters}{115}{subsubsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {8.4.2}References vs Pointers as Function Arguments}{117}{subsubsection.8.4.2}%
+\contentsline {subsubsection}{\numberline {8.4.3}Using const on References}{119}{subsubsection.8.4.3}%
+\contentsline {subsubsection}{\numberline {8.4.4}Extended: Using const with References}{120}{subsubsection.8.4.4}%
+\contentsline {subsubsection}{\numberline {8.4.5}Definition of Reference in C++ and why it's not valid in C}{121}{subsubsection.8.4.5}%
+\contentsline {subsubsection}{\numberline {8.4.6}QA}{122}{subsubsection.8.4.6}%
+\contentsline {subsubsection}{\numberline {8.4.7}Quiz}{124}{subsubsection.8.4.7}%
+\contentsline {section}{\numberline {9}Classes and Objects}{126}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Classes}{126}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}An Object as an Instance of a Class}{126}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Accessing Members Using the Dot Operator (\texttt {.})}{127}{subsubsection.9.1.2}%
+\contentsline {subsubsection}{\numberline {9.1.3}Accessing Members Using the Pointer Operator (\texttt {->})}{128}{subsubsection.9.1.3}%
+\contentsline {subsubsection}{\numberline {9.1.4}Class vs Struct}{130}{subsubsection.9.1.4}%
+\contentsline {subsubsection}{\numberline {9.1.5}Different Ways to Declare a \texttt {struct}}{131}{subsubsection.9.1.5}%
+\contentsline {paragraph}{Note on \texttt {typedef struct}}{132}{section*.15}%
+\contentsline {subsubsection}{\numberline {9.1.6}Public, Private, Protected, Friend in C++}{133}{subsubsection.9.1.6}%
+\contentsline {paragraph}{Example:}{133}{section*.16}%
+\contentsline {paragraph}{Key Summary:}{134}{section*.17}%
+\contentsline {subsubsection}{\numberline {9.1.7}This Keyword}{135}{subsubsection.9.1.7}%
+\contentsline {paragraph}{Example:}{135}{section*.18}%
+\contentsline {paragraph}{Key Points:}{135}{section*.19}%
+\contentsline {subsubsection}{\numberline {9.1.8}Static Variables in Classes}{136}{subsubsection.9.1.8}%
+\contentsline {paragraph}{Example:}{136}{section*.20}%
+\contentsline {paragraph}{Key Points:}{136}{section*.21}%
+\contentsline {subsection}{\numberline {9.2}Constructors}{137}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Declaring and Implementing a Constructor}{137}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}When and How to Use Constructors}{138}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Overloading Constructors}{138}{subsubsection.9.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.4}Class Without a Default Constructor}{138}{subsubsection.9.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.5}Constructor Parameters with Default Values}{139}{subsubsection.9.2.5}%
+\contentsline {subsubsection}{\numberline {9.2.6}Constructors with Initialization Lists}{140}{subsubsection.9.2.6}%
+\contentsline {paragraph}{Syntax:}{140}{section*.22}%
+\contentsline {paragraph}{Example:}{140}{section*.23}%
+\contentsline {paragraph}{Example Requiring an Initialization List:}{141}{section*.24}%
+\contentsline {subsection}{\numberline {9.3}Destructor}{142}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Declaring and Implementing a Destructor}{142}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}When and How to Use a Destructor}{143}{subsubsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.4}Copy Constructors}{144}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Shallow Copying and Associated Problems}{144}{subsubsection.9.4.1}%
+\contentsline {subsubsection}{\numberline {9.4.2}Ensuring Deep Copy Using a Copy Constructor}{146}{subsubsection.9.4.2}%
+\contentsline {subsubsection}{\numberline {9.4.3}Explicit keyword}{150}{subsubsection.9.4.3}%
+\contentsline {subsubsection}{\numberline {9.4.4}Move Constructors Help Improve Performance}{151}{subsubsection.9.4.4}%
+\contentsline {subsection}{\numberline {9.5}Different Uses of Constructors and Destructors}{154}{subsection.9.5}%
+\contentsline {subsubsection}{\numberline {9.5.1}Class That Does Not Permit Copying}{154}{subsubsection.9.5.1}%
+\contentsline {subsubsection}{\numberline {9.5.2}Singleton Class That Permits a Single Instance}{155}{subsubsection.9.5.2}%
+\contentsline {subsection}{\numberline {9.6}Class That Prohibts Instantiation on the Stack}{156}{subsection.9.6}%
+\contentsline {subsubsection}{\numberline {9.6.1}Using Constructors to Convert Types}{157}{subsubsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.7}sizeof() a Class}{160}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}How struct differs from class}{164}{subsection.9.8}%
+\contentsline {subsection}{\numberline {9.9}Declaring a 'friend' of a class}{166}{subsection.9.9}%
+\contentsline {subsection}{\numberline {9.10}union: A Special Data Storage Mechanism}{167}{subsection.9.10}%
+\contentsline {subsection}{\numberline {9.11}Using Aggregate Initialization on Classes and Structs}{168}{subsection.9.11}%
+\contentsline {subsection}{\numberline {9.12}constexpr with Classes and Objects}{170}{subsection.9.12}%
+\contentsline {subsection}{\numberline {9.13}QA}{171}{subsection.9.13}%
+\contentsline {subsection}{\numberline {9.14}Quiz}{172}{subsection.9.14}%
+\contentsline {section}{\numberline {10}Implementing Inheritance}{174}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Basics of Inheritance}{174}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {10.1.1}Access specific keyword protected}{176}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {10.1.2}Base Class Initialiation --- Passing Parameters to the Base Class}{177}{subsubsection.10.1.2}%
+\contentsline {subsubsection}{\numberline {10.1.3}Derived Class Overriding Base Class's Methods}{178}{subsubsection.10.1.3}%
+\contentsline {subsubsection}{\numberline {10.1.4}Invoking Overriden Methods of a Base Class}{179}{subsubsection.10.1.4}%
+\contentsline {subsubsection}{\numberline {10.1.5}Derived Class Hiding Base Class's Methods}{180}{subsubsection.10.1.5}%
+\contentsline {subsection}{\numberline {10.2}Order of Construction}{181}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Order of Destruction}{182}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Private Inheritance}{184}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Composition (side note)}{186}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Protected Inheritance}{187}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Multiple Inheritance}{189}{subsection.10.7}%
+\contentsline {subsection}{\numberline {10.8}Avoid Inheritance via \texttt {final}}{191}{subsection.10.8}%
+\contentsline {section}{\numberline {11}Polymorphism}{194}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Basics of Polymorphism}{194}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}Need for Polymorphic Behavior}{194}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}Polymorphic Behavior Implemented Using Virtual Functions}{195}{subsubsection.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.3}Need For Virtual Destructors}{196}{subsubsection.11.1.3}%
+\contentsline {subsubsection}{\numberline {11.1.4}How do Virtual Functions Work? --- The Virtual Function Table (vtable)}{198}{subsubsection.11.1.4}%
+\contentsline {subsection}{\numberline {11.2}Abstract Base Classes and Pure Virtual Functions}{201}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Using 'virtual' Inheritance to Solve the Diamond Problem}{202}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Specifier 'override' to Indicate Intention to Override}{205}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Using 'final' to Prevent Function Overriding}{207}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Virtual Copy Constructors?}{208}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}QA}{209}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}Quiz}{210}{subsection.11.8}%
+\contentsline {section}{\numberline {12}Operator Types and Operator Overloading}{212}{section.12}%
+\contentsline {subsection}{\numberline {12.1}What are Operators in C++?}{212}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Unary Operators}{214}{subsection.12.2}%
