@@ -179,3 +179,8 @@
 \contentsline {section}{\numberline {12}Operator Types and Operator Overloading}{212}{section.12}%
 \contentsline {subsection}{\numberline {12.1}What are Operators in C++?}{212}{subsection.12.1}%
 \contentsline {subsection}{\numberline {12.2}Unary Operators}{214}{subsection.12.2}%
+\contentsline {subsubsection}{\numberline {12.2.1}Types of Unary Operators}{215}{subsubsection.12.2.1}%
+\contentsline {subsubsection}{\numberline {12.2.2}Programming a Unary Increment/Decrement Operator}{216}{subsubsection.12.2.2}%
+\contentsline {subsubsection}{\numberline {12.2.3}Programming Conversion Operators}{217}{subsubsection.12.2.3}%
+\contentsline {subsubsection}{\numberline {12.2.4}Programming Dereference Operator (*) and Member Selection Operator ($->$)}{219}{subsubsection.12.2.4}%
+\contentsline {subsection}{\numberline {12.3}Binary Operators}{220}{subsection.12.3}%

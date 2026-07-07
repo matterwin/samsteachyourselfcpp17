@@ -8562,6 +8562,188 @@ MyString sumThem (sayHello + sayWorld);			// if operator+ were supported by MySt
 \newpage
 
 \subsection{Unary Operators}
+\begin{itemize}
+	\item \textbf{Operators} that function on a \textbf{single operand} are called \vocab{unary operaetors}.
+
+	\item A \textbf{unary operator} that is implemented in the \textbf{global namespace} or as a \textbf{static member function} of a class uses the following structure:
+	\begin{verbatim}
+return_type operator operator_type (parameter type)
+{
+	// ... implementation
+}
+	\end{verbatim}
+
+\item A \textbf{unary operator} that is a \textbf{(non-static)} member of a class has a similar structure but is lacking in parameters, b/c the \textbf{single parameter} that it works upon is the \underline{\textbf{instance of the class itself (*this)}}:
+
+	\begin{verbatim}
+return_type operator operator_type ()
+{
+	// ... implementation
+}
+	\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Types of Unary Operators}
+\begin{tabular}{|p{0.25\textwidth}|p{0.65\textwidth}|}
+    \hline
+    \textbf{Operator} & \textbf{Name} \\
+    \hline
+    ++ & Increment \\
+    -- & Decrement \\
+	* & Pointer dereference \\
+	\verb|->| & Member selection \\
+	! & Logical NOT \\
+	\& & Address-of \\
+	- & One's complement \\ 
+	+ & Unary plus \\ 
+	- & Unary negation \\ 
+	Conversion operators & Conversion into other types \\
+    \hline
+\end{tabular}
+
+\newpage
+\subsubsection{Programming a Unary Increment/Decrement Operator}
+\begin{itemize}
+	\item A \fbox{\textbf{unary prefix increment operator (++)}} is the following syntax \textbf{within the class declaration}:
+		\begin{verbatim}
+Date& operator ++ (int)
+{
+	// store a copy of the current state of the object before incrementing day
+	Date copy (*this);
+
+	// increment implementation code
+
+	// return state before increment (because, postfix)
+	return copy;
+}
+		\end{verbatim}
+
+	\item The \textbf{prefix} and \textbf{postfix} \underline{\textbf{decrement operators}} have a similar syntax as the \textbf{increment operators}, just that the \textbf{declaration} would contain a $--$ where you see a ++.
+
+	\item \fbox{\textbf{Listing 12.1} Allowing Incrementing and Decrementing Days}
+
+	\item The \textbf{postfix} differs from \textbf{prefix} operator in \textbf{return-type} and \textbf{parameters}.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Programming Conversion Operators}
+\begin{itemize}
+	\item doing \verb|cout << holiday;| will produce an error in absence of conversion operator
+
+		\begin{verbatim}
+error: binary '<<' : no operator found which takes a right-hand operand of type 'Date' 
+(or there is no acceptable conversion)
+		\end{verbatim}
+
+	\item \verb|cout| didn't accept the type of the instance of the class.
+
+	\item We know that \verb|cout| c an work well with a \verb|const char*|:
+		\begin{verbatim}
+std::cout << "Hello world";	// const char* works!
+		\end{verbatim}
+
+	\item So, getting \verb|cout| to work with an \textbf{instance} of type \verb|Date| might be as simple as adding an \textbf{operator} that returns a \verb|const char*| version:
+		\begin{verbatim}
+operator const char*()
+{
+	// operator implementation that returns a char*
+}
+		\end{verbatim}
+
+	\item \fbox{\textbf{Listing 12.2} implementing conversion operator const char* for class Date}
+
+	\item The \textbf{operator} opens up new possibilities toward consuming \verb|class Date|.
+
+	It allows you to even assign an \textbf{instance} of a \verb|Date| directly to a \verb|string|.
+\end{itemize}
+
+\pbreak
+\begin{tcolorbox}
+	\begin{itemize}
+	\item Note that such assigments cause \textbf{implicit conversions}, that is, the compiler has used the available \textbf{conversion operator} (in this case \verb|const char*|) there by permitting unintended assignments that get compiled without error.
+
+	\item To \textbf{avoid implicit conversions}, use the keyword \verb|explicit| at the begging of an \textbf{operator declaration}, as follows:
+
+		\begin{verbatim}
+explicit operator const char*)_
+{
+	// conversion code here
+}
+		\end{verbatim}
+
+\item Using \vocab{explicit} would force the programmer to assert his intention to convert using a \textbf{cast}:
+	\begin{verbatim}
+// explicit
+string strHoliday(static_cast<const char*>(Holiday));
+strHoliday = static_cast<const char*>(Date(11, 11, 2016));	
+
+// implicit
+string strHoliday (holiday);
+strHoliday = Date(11, 11, 2016);
+	\end{verbatim}
+
+\item Casting, including \verb|static_cast| is dicussined in Lesson 13
+	\end{itemize}
+\end{tcolorbox}
+
+\pbreak
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item Program as many \textbf{operators} as you think your class would be used with.
+
+			If your application needs an itneger representation of a \verb|Date|, then you may program it as follows:
+
+		\begin{verbatim}
+explicit operator int()
+{
+	return day + month + year;
+}
+		\end{verbatim}
+
+	\item This would allow an \textbf{instance} of \verb|Date| to be used or transacted as an \textbf{integer}:
+
+	\begin{verbatim}
+ FuncTakesInt(static_cast<int>(Date(12, 25, 2016)));
+	\end{verbatim}
+
+\item \fbox{\textbf{Listing 12.8} later on also demonstrates \vocab{conversion operators} used with a \textbf{string class}}.
+	\end{itemize}
+\end{tcolorbox}
+
+
+\newpage
+
+\subsubsection{Programming Dereference Operator (*) and Member Selection Operator ($->$)}
+\begin{itemize}
+\item The \vocab{dereference operator (*)} and \vocab{member selection operator} (\verb|->|) are most frequently used in the programming of \vocab{smart pointer classes}.
+\item \vocab{Smart pointers} are \textbf{utility classes} that wrap regular pointers and simply memory management by resolving \textbf{ownership} and \textbf{copy issues} using \textbf{operators}. (Lesson 26)
+
+\item This lesson takes a brief look at how \textbf{overloading operators} helps in making \textbf{smart pointers} work.
+
+\pbreak
+
+\item Analyze the use of the \verb|std::unique_ptr| in \fbox{\textbf{Listing 12.3}} and understand how it uses \textbf{operator (*)} and \textbf{operator} \verb|(->)| to help you use the \textbf{smart pointer class} like any normal pointer.
+
+	\pbreak
+
+\item This example demonstrates how a \vocab{smart pointer} allows you to use \textbf{normal pointer syntax} as shown.
+
+\item It's like the variables are just the regular \verb|int*| and \verb|Date*|.
+
+\item \boxednote{
+	The \textbf{\fbox{secret lies}} in the \textbf{pointer class} \textbf{std::unique\_ptr} that is \textbf{\underline{smart}} b/c it implements \textbf{operator (*)} and \textbf{operator} \textbf{($->$)}.
+}
+\item Smart pointers can do much more like de-allocate memory as they go out of scope.
+
+\end{itemize}
+
+\newpage
+
+\subsection{Binary Operators}
 
 \end{document}
 

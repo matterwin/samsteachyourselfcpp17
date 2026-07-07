@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.1)  5 JUL 2026 23:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.1)  6 JUL 2026 23:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1237,7 +1237,31 @@ Overfull \hbox (13.02829pt too wide) in paragraph at lines 8550--8550
  []\OT1/cmtt/m/n/10 MyString sumThem (sayHello + sayWorld);   // if operator+ were supported by MyString[] 
  []
 
-[213] [214] (./notes.aux)
+[213]
+Overfull \hbox (18.4838pt too wide) in paragraph at lines 8576--8577
+\OT1/cmr/m/n/10 pa-ram-e-ters, b/c the \OT1/cmr/bx/n/10 sin-gle pa-ram-e-ter \OT1/cmr/m/n/10 that it works upon is the $[]$: 
+ []
+
+[214] [215] [216]
+Overfull \hbox (23.5282pt too wide) in paragraph at lines 8637--8637
+ []\OT1/cmtt/m/n/10 error: binary '<<' : no operator found which takes a right-hand operand of type 'Date' 
+ []
+
+
+Overfull \hbox (18.62718pt too wide) in paragraph at lines 8713--8714
+[][]\OT1/cmr/m/n/10 . 
+ []
+
+[217] [218]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8720.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8720.
+
+[219] [220] (./notes.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1251,21 +1275,21 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `notes.out' has not changed.
-(rerunfilecheck)             Checksum: DA1106CE2D496347E5C98C7886568D86;37914.
+(rerunfilecheck)             Checksum: DB26AFBA72ED6E8DF5D806E2B38A847B;39280.
  ) 
 Here is how much of TeX's memory you used:
- 24764 strings out of 469515
- 464671 string characters out of 5470808
- 868790 words of memory out of 5000000
- 52568 multiletter control sequences out of 15000+600000
+ 24782 strings out of 469515
+ 464951 string characters out of 5470808
+ 868793 words of memory out of 5000000
+ 52575 multiletter control sequences out of 15000+600000
  636668 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,9n,118p,607b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on notes.pdf (214 pages, 510157 bytes).
+Output written on notes.pdf (220 pages, 519360 bytes).
 PDF statistics:
- 2064 PDF objects out of 2073 (max. 8388607)
- 1798 compressed objects within 18 object streams
- 486 named destinations out of 1000 (max. 500000)
- 1381 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2120 PDF objects out of 2487 (max. 8388607)
+ 1847 compressed objects within 19 object streams
+ 497 named destinations out of 1000 (max. 500000)
+ 1421 words of extra memory for PDF output out of 10000 (max. 10000000)
 
