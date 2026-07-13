@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.1)  6 JUL 2026 23:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.1)  12 JUL 2026 21:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -684,11 +684,11 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbackslash' on input line 54.
 
-[2] [3])
+[2] [3] [4])
 \tf@toc=\write5
 \openout5 = `notes.toc'.
 
- [4] [5{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+ [5] [6{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
@@ -713,7 +713,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 305--306
 
  []
 
-[6]
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
@@ -733,12 +733,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 359--360
 
  []
 
-[7]
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
-[8]
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 394--396
 
  []
@@ -748,7 +748,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[9]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
@@ -758,7 +758,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
-[10] [11]
+[11] [12]
 Overfull \hbox (37.41891pt too wide) in paragraph at lines 444--445
 \OT1/cmr/m/n/10 C++ pro-grams are com-prised into [] com-pris-ing [] and []. 
  []
@@ -773,7 +773,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 452--453
 
  []
 
-[12]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 478--479
 
  []
@@ -793,12 +793,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 492--494
 
  []
 
-[13]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 500--501
 
  []
 
-[14]
+[15]
 Underfull \hbox (badness 10000) in paragraph at lines 573--574
 
  []
@@ -827,7 +827,7 @@ Overfull \hbox (35.21803pt too wide) in paragraph at lines 590--591
 []\OT1/cmr/m/n/10 Side note: C/C++ is case-sensitive, so Int and int aren't the same. Int would have to be a class/struct/typedef/etc
  []
 
-[15]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 594--595
 
  []
@@ -852,7 +852,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 606--607
 
  []
 
-[16]
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 665--666
 
  []
@@ -862,22 +862,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 667--668
 
  []
 
-[17] [18] [19]
+[18] [19] [20]
 Underfull \hbox (badness 10000) in paragraph at lines 753--754
 
  []
 
-[20]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 779--780
 
  []
 
-[21]
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 793--794
 
  []
 
-[22] [23] [24] [25] [26] [27] [28]
+[23] [24] [25] [26] [27] [28] [29]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 911.
 
@@ -885,15 +885,15 @@ Overfull \hbox (3.61266pt too wide) in paragraph at lines 919--920
 [][][]\OT1/cmtt/m/n/10 int64_t []\OT1/cmr/m/n/10 -- ex-actly 64 bits, range: $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 9\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 223\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 372\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 036\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 854\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 775\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 808$ \OT1/cmr/m/n/10 to $\OT1/cmr/m/n/12 9\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 223\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 372\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 036\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 854\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 775\OML/cmm/m/it/12 ;  \OT1/cmr/m/n/12 807$\OT1/cmr/m/n/10 . 
  []
 
-[29] [30] [31] [32] [33] [34]
+[30] [31] [32] [33] [34] [35]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1070.
- [35] [36] [37]
+ [36] [37] [38]
 Overfull \hbox (13.67067pt too wide) in paragraph at lines 1243--1244
 []\OT1/cmr/m/n/10 In the above ex-am-ple, the com-piler de-ter-mines [][]\OT1/cmtt/m/n/10 bool []\OT1/cmr/m/n/10 as the type that suits vari-abled [][]\OT1/cmtt/m/n/10 coinFlippedHeads
  []
 
-[38]
+[39]
 Overfull \hbox (66.43524pt too wide) in paragraph at lines 1261--1262
 []\OT1/cmr/m/n/10 Here is an ex-am-ple where a pro-gram-mer wants to call an \OT1/cmr/bx/n/10 un-signed int \OT1/cmr/m/n/10 a de-scrip-tive [][]\OT1/cmtt/m/n/10 STRICTLY_POSITIVE_INTEGER[]\OT1/cmr/m/n/10 . 
  []
@@ -903,12 +903,12 @@ Overfull \hbox (59.06499pt too wide) in paragraph at lines 1276--1277
 \OT1/cmr/bx/n/10 signed int\OT1/cmr/m/n/10 . At later stages when the com-piler en-coun-ters the al-ready de-fined type [][]\OT1/cmtt/m/n/10 STRICTLY_POSITIVE_INTEGER[]\OT1/cmr/m/n/10 ,
  []
 
-[39]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 1332--1334
 
  []
 
-[40] [41] [42]
+[41] [42] [43]
 Underfull \hbox (badness 10000) in paragraph at lines 1463--1464
 
  []
@@ -928,17 +928,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 1504--1505
 
  []
 
-[43] [44]
+[44] [45]
 Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
 
  []
 
-[45]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 1587--1588
 
  []
 
-[46] [47] [48]
+[47] [48] [49]
 Underfull \hbox (badness 10000) in paragraph at lines 1707--1708
 
  []
@@ -953,7 +953,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1719--1720
 
  []
 
-[49]
+[50]
 Underfull \hbox (badness 10000) in paragraph at lines 1732--1734
 
  []
@@ -978,7 +978,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1760--1762
 
  []
 
-[50] [51] [52]
+[51] [52] [53]
 Underfull \hbox (badness 10000) in paragraph at lines 1836--1837
 
  []
@@ -993,13 +993,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1843--1844
 
  []
 
-[53] [54] [55] [56] [57] [58] [59] [60]
+[54] [55] [56] [57] [58] [59] [60] [61]
 
 LaTeX Font Warning: Font shape `OMS/cmtt/bx/n' undefined
 (Font)              using `OMS/cmtt/m/n' instead
 (Font)              for symbol `textbackslash' on input line 2142.
 
-[61] [62]
+[62] [63]
 Underfull \hbox (badness 10000) in paragraph at lines 2215--2216
 
  []
@@ -1014,17 +1014,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 2223--2224
 
  []
 
-[63]
+[64]
 Underfull \hbox (badness 10000) in paragraph at lines 2240--2241
 
  []
 
-[64] [65]
+[65] [66]
 Overfull \hbox (12.25513pt too wide) in paragraph at lines 2250--2252
 \OT1/cmr/m/n/10 These steps are pro-grammed into ex-pres-sions, state-ments, and use op-er-a-tors to per-form cal-cu-la-tions/actions. 
  []
 
-[66] [67] [68]
+[67] [68] [69]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2377.
@@ -1046,7 +1046,7 @@ Overfull \hbox (60.27788pt too wide) in paragraph at lines 2408--2408
  []\OT1/cmtt/m/n/10 double y = 7 / 2;      // y = 3.0 (division happens first, still integer division, IMPORTANT)[] 
  []
 
-[69] [70] [71] [72] [73] [74] [75]
+[70] [71] [72] [73] [74] [75] [76]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2671.
@@ -1063,205 +1063,332 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2671.
 
-[76] [77] [78] [79] [80] [81] [82] [83] [84] [85]
-Overfull \hbox (10.2272pt too wide) in paragraph at lines 2894--2895
+[77] [78] [79] [80] [81] [82] [83] [84] [85] [86] [87]
+Overfull \hbox (10.2272pt too wide) in paragraph at lines 2896--2897
 []\OT1/cmr/m/n/10 Just the same way as a \OT1/cmr/bx/n/10 vari-able \OT1/cmr/m/n/10 of type \OT1/cmr/bx/n/10 int \OT1/cmr/m/n/10 is used to con-tain an \OT1/cmr/bx/n/10 in-te-ger value\OT1/cmr/m/n/10 , a []
  []
 
-[86] [87] [88] [89] [90]
-Underfull \hbox (badness 10000) in paragraph at lines 3035--3037
+[88] [89] [90] [91] [92]
+Underfull \hbox (badness 10000) in paragraph at lines 3037--3039
 
  []
 
-[91] [92] [93] [94] [95] [96] [97]
-Overfull \hbox (2.33748pt too wide) in paragraph at lines 3342--3343
+[93] [94] [95] [96] [97] [98] [99]
+Overfull \hbox (2.33748pt too wide) in paragraph at lines 3344--3345
 \OT1/cmr/m/n/10 ternary forms), and then over-load res-o-lu-tion de-ter-mines whether a match-ing [][]\OT1/cmtt/m/n/10 operator+[]\OT1/cmr/m/n/10 , [][]\OT1/cmtt/m/n/10 operator![]\OT1/cmr/m/n/10 ,
  []
 
-[98] [99] [100]
-Overfull \hbox (62.45438pt too wide) in paragraph at lines 3478--3479
-[][] 
- []
-
-[101]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3484.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 3484.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3497--3498
-
- []
-
-[102]
-Overfull \hbox (25.09503pt too wide) in paragraph at lines 3578--3579
+[100] [101] [102]
+Overfull \hbox (62.45438pt too wide) in paragraph at lines 3480--3481
 [][] 
  []
 
 [103]
-Underfull \hbox (badness 10000) in paragraph at lines 3615--3616
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3486.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 3486.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3499--3500
+
+ []
+
+[104]
+Overfull \hbox (25.09503pt too wide) in paragraph at lines 3580--3581
+[][] 
+ []
+
+[105]
+Underfull \hbox (badness 10000) in paragraph at lines 3617--3618
 
  []
 
 
-Overfull \hbox (40.27824pt too wide) in paragraph at lines 3653--3653
+Overfull \hbox (40.27824pt too wide) in paragraph at lines 3655--3655
  []\OT1/cmtt/m/n/10 const int* pointsToInt = &hoursInDay; // OK! address can be changed but not the data.[] 
  []
 
-[104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118]
-Overfull \hbox (144.27715pt too wide) in paragraph at lines 4356--4356
+[106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+Overfull \hbox (144.27715pt too wide) in paragraph at lines 4358--4358
  []\OT1/cmtt/m/n/10 const int& constRef = original; // think of (const belongs to const (int) &, so can't change reference value)[] 
  []
 
-[119] [120] [121]
-Underfull \hbox (badness 10000) in paragraph at lines 4468--4469
+[121] [122] [123]
+Underfull \hbox (badness 10000) in paragraph at lines 4470--4471
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4481--4482
+Underfull \hbox (badness 10000) in paragraph at lines 4483--4484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4485--4486
+Underfull \hbox (badness 10000) in paragraph at lines 4487--4488
 
  []
 
-[122]
-Underfull \hbox (badness 10000) in paragraph at lines 4544--4545
+[124]
+Underfull \hbox (badness 10000) in paragraph at lines 4546--4547
 
  []
 
-[123]
-Underfull \hbox (badness 10000) in paragraph at lines 4585--4586
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4589--4590
+[125]
+Underfull \hbox (badness 10000) in paragraph at lines 4587--4588
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4593--4594
+Underfull \hbox (badness 10000) in paragraph at lines 4591--4592
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4597--4598
+Underfull \hbox (badness 10000) in paragraph at lines 4595--4596
 
  []
 
-[124] [125]
-Overfull \hbox (54.77406pt too wide) in paragraph at lines 4604--4605
+
+Underfull \hbox (badness 10000) in paragraph at lines 4599--4600
+
+ []
+
+[126] [127]
+Overfull \hbox (54.77406pt too wide) in paragraph at lines 4606--4607
 []\OT1/cmr/m/n/10 Thus far, we've learned [] and haven't dived into [].
  []
 
-[126] [127] [128] [129] [130] [131] [132] [133] [134] [135] [136]
-Overfull \hbox (25.12898pt too wide) in paragraph at lines 5156--5157
+[128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138]
+Overfull \hbox (25.12898pt too wide) in paragraph at lines 5158--5159
 []\OT1/cmr/m/n/10 For ex-am-ple, [][]\OT1/cmtt/m/n/10 Human::dateOfBirth []\OT1/cmr/m/n/10 is re-fer-ring to the \OT1/cmr/bx/n/10 vari-able [][]\OT1/cmtt/m/n/10 dateOfBirth []\OT1/cmr/m/n/10 de-clared $[]$
  []
 
-[137] [138] [139] [140] [141] [142] [143]
-Overfull \hbox (65.06793pt too wide) in paragraph at lines 5471--5472
+[139] [140] [141] [142] [143] [144] [145]
+Overfull \hbox (65.06793pt too wide) in paragraph at lines 5473--5474
 []\OT1/cmr/m/n/10 Such copies are [] and are a \OT1/cmr/bx/n/10 threat \OT1/cmr/m/n/10 to the sta-bil-ity of the pro-gram, as [] 
  []
 
-[144] [145] [146]
-Overfull \hbox (2.84114pt too wide) in paragraph at lines 5602--5604
+[146] [147] [148]
+Overfull \hbox (2.84114pt too wide) in paragraph at lines 5604--5606
 []\OT1/cmr/m/n/10 Yes, the [] in sev-eral sit-u-a-tions where an ob-ject is copied.
  []
 
-[147]
-Underfull \hbox (badness 2970) in paragraph at lines 5672--5673
+[149]
+Underfull \hbox (badness 2970) in paragraph at lines 5674--5675
 []\OT1/cmr/m/n/10 This would \OT1/cmr/bx/n/10 still \OT1/cmr/m/n/10 be a $[]$ be-cause you still haven't yet sup-plied a
  []
 
-[148] [149] [150]
-Overfull \hbox (39.21085pt too wide) in paragraph at lines 5824--5825
+[150] [151] [152]
+Overfull \hbox (39.21085pt too wide) in paragraph at lines 5826--5827
 []\OT1/cmr/m/n/10 To \OT1/cmr/bx/n/10 avoid \OT1/cmr/m/n/10 this per-for-mance bot-tle-neck, ver-sions of C++ start-ing with C++11 fea-ture a []
  []
 
-[151] [152] [153] [154]
-Overfull \hbox (54.45815pt too wide) in paragraph at lines 6011--6012
+[153] [154] [155] [156]
+Overfull \hbox (54.45815pt too wide) in paragraph at lines 6013--6014
 []\OT1/cmr/m/n/10 Welcome to the con-cept of [] that uses [], a [],
  []
 
-[155] [156] [157] [158] [159] [160] [161] [162] [163] [164] [165]
-Overfull \hbox (33.08333pt too wide) in paragraph at lines 6576--6577
+[157] [158] [159] [160] [161] [162] [163] [164] [165] [166] [167]
+Overfull \hbox (33.08333pt too wide) in paragraph at lines 6578--6579
 []\OT1/cmr/m/n/10 The rule is waived for \OT1/cmr/bx/n/10 classes \OT1/cmr/m/n/10 and \OT1/cmr/bx/n/10 func-tions \OT1/cmr/m/n/10 that are dis-closed as [] or []
  []
 
-[166] [167] [168] [169] [170]
-Underfull \hbox (badness 10000) in paragraph at lines 6792--6793
+[168] [169] [170] [171] [172]
+Underfull \hbox (badness 10000) in paragraph at lines 6794--6795
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6796--6798
+Underfull \hbox (badness 10000) in paragraph at lines 6798--6800
 
  []
 
-[171] [172] [173] [174] [175] [176]
-Overfull \hbox (35.71931pt too wide) in paragraph at lines 7036--7037
+[173] [174] [175] [176] [177] [178]
+Overfull \hbox (35.71931pt too wide) in paragraph at lines 7038--7039
 []\OT1/cmr/m/n/10 In this [][]\OT1/cmtt/m/n/10 Fish []\OT1/cmr/m/n/10 now has a \OT1/cmr/bx/n/10 con-struc-tor \OT1/cmr/m/n/10 that takes a \OT1/cmr/bx/n/10 de-fault pa-ram-e-ter \OT1/cmr/m/n/10 ini-tialz-ing [][]\OT1/cmtt/m/n/10 Fish::isFreshWaterFish[]\OT1/cmr/m/n/10 . 
  []
 
-[177] [178] [179] [180] [181] [182] [183] [184] [185] [186]
-Overfull \hbox (11.36401pt too wide) in paragraph at lines 7461--7464
+[179] [180] [181] [182] [183] [184] [185] [186] [187] [188]
+Overfull \hbox (11.36401pt too wide) in paragraph at lines 7463--7466
 [][] \OT1/cmr/m/n/10 is an-other form of in-her-i-tance in which the in-her-ited [][]\OT1/cmtt/m/n/10 public []\OT1/cmr/m/n/10 and [][]\OT1/cmtt/m/n/10 protected
  []
 
-[187] [188] [189] [190] [191] [192] [193]
-Overfull \hbox (4.4615pt too wide) in paragraph at lines 7818--7819
+[189] [190] [191] [192] [193] [194] [195]
+Overfull \hbox (4.4615pt too wide) in paragraph at lines 7820--7821
 []\OT1/cmr/m/n/10 It is, how-ever, pos-si-ble that both [][]\OT1/cmtt/m/n/10 Tuna []\OT1/cmr/m/n/10 and [][]\OT1/cmtt/m/n/10 Carp []\OT1/cmr/m/n/10 pro-vide their \OT1/cmr/bx/n/10 own [][]\OT1/cmtt/m/n/10 Tuna::Swim() []\OT1/cmr/m/n/10 and [][]\OT1/cmtt/m/n/10 Carp::Swim()
  []
 
 
-Overfull \hbox (10.64633pt too wide) in paragraph at lines 7822--7823
+Overfull \hbox (10.64633pt too wide) in paragraph at lines 7824--7825
 [][] 
  []
 
-[194] [195] [196] [197] [198] [199] [200] [201] [202] [203] [204] [205] [206] [207] [208] [209] [210] [211]
-Overfull \hbox (25.62637pt too wide) in paragraph at lines 8530--8531
+[196] [197] [198] [199] [200] [201] [202] [203] [204] [205] [206] [207] [208] [209] [210] [211] [212] [213]
+Overfull \hbox (25.62637pt too wide) in paragraph at lines 8532--8533
 []\OT1/cmr/m/n/10 The [] 
  []
 
-[212]
-Overfull \hbox (13.02829pt too wide) in paragraph at lines 8550--8550
+[214]
+Overfull \hbox (13.02829pt too wide) in paragraph at lines 8552--8552
  []\OT1/cmtt/m/n/10 MyString sumThem (sayHello + sayWorld);   // if operator+ were supported by MyString[] 
  []
 
-[213]
-Overfull \hbox (18.4838pt too wide) in paragraph at lines 8576--8577
+[215]
+Overfull \hbox (18.4838pt too wide) in paragraph at lines 8578--8579
 \OT1/cmr/m/n/10 pa-ram-e-ters, b/c the \OT1/cmr/bx/n/10 sin-gle pa-ram-e-ter \OT1/cmr/m/n/10 that it works upon is the $[]$: 
  []
 
-[214] [215] [216]
-Overfull \hbox (23.5282pt too wide) in paragraph at lines 8637--8637
+[216] [217] [218]
+Overfull \hbox (23.5282pt too wide) in paragraph at lines 8639--8639
  []\OT1/cmtt/m/n/10 error: binary '<<' : no operator found which takes a right-hand operand of type 'Date' 
  []
 
 
-Overfull \hbox (18.62718pt too wide) in paragraph at lines 8713--8714
+Overfull \hbox (18.62718pt too wide) in paragraph at lines 8715--8716
 [][]\OT1/cmr/m/n/10 . 
  []
 
-[217] [218]
+[219] [220]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 8720.
+(hyperref)                removing `math shift' on input line 8722.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 8720.
+(hyperref)                removing `math shift' on input line 8722.
 
-[219] [220] (./notes.aux)
+[221] [222]
+Overfull \hbox (6.87762pt too wide) in paragraph at lines 8773--8811
+[][] 
+ []
+
+[223] [224] [225] [226] [227]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 8952.
+
+[228] [229] [230] [231] [232] [233] [234]
+Overfull \hbox (65.52783pt too wide) in paragraph at lines 9205--9205
+ []\OT1/cmtt/m/n/10 sayHelloAgain = Hello + World + CPP; // operator+, copy constructor, copy assignment operator=[] 
+ []
+
+
+Overfull \hbox (56.86061pt too wide) in paragraph at lines 9224--9225
+[]\OT1/cmr/m/n/10 While mak-ing it easy to con-cate-nate the strings, the [] can cause $[]$ 
+ []
+
+[235] [236] [237] [238] [239] [240]
+Overfull \hbox (4.11629pt too wide) in paragraph at lines 9456--9480
+ [] 
+ []
+
+[241]
+Overfull \hbox (2.77779pt too wide) in paragraph at lines 9520--9521
+[][]\OT1/cmr/m/n/10 . 
+ []
+
+[242]
+Overfull \hbox (35.52673pt too wide) in paragraph at lines 9547--9548
+[]\OT1/cmr/m/n/10 The \OT1/cmr/bx/n/10 move as-sign-ment op-er-a-tor \OT1/cmr/m/n/10 is still called be-cause the fi-nal tem-po-rary re-sult of [][]\OT1/cmtt/m/n/10 Hello + World + CPP
+ []
+
+[243] [244]
+Underfull \hbox (badness 10000) in paragraph at lines 9611--9612
+
+ []
+
+
+Overfull \hbox (6.87762pt too wide) in paragraph at lines 9613--9624
+[][] 
+ []
+
+[245] [246] [247] [248] [249] [250] [251] [252] [253] [254] [255] [256] [257] [258] [259] [260] [261]
+Overfull \hbox (21.84431pt too wide) in paragraph at lines 10094--10095
+[]\OT1/cmr/m/n/10 Both these \OT1/cmr/bx/n/10 di-rec-tives \OT1/cmr/m/n/10 tell the \OT1/cmr/bx/n/10 pre-pro-ces-sor \OT1/cmr/m/n/10 to re-place ev-ery in-stance of the \OT1/cmr/bx/n/10 macro \OT1/cmr/m/n/10 (AR-RAY[]LENGTH
+ []
+
+[262]
+Overfull \hbox (3.81192pt too wide) in paragraph at lines 10118--10119
+[]\OT1/cmr/m/n/10 I am not go-ing over code for this triv-ial thing, but note that the \OT1/cmr/bx/n/10 pre-pro-ces-sor $[]$
+ []
+
+[263]
+Overfull \hbox (7.55078pt too wide) in paragraph at lines 10126--10127
+[]\OT1/cmr/m/n/10 C/C++ pro-gram-mers typ-i-cally $[]$ their classes and func-tions in [] fi-less called []. 
+ []
+
+[264]
+Overfull \hbox (1.0918pt too wide) in paragraph at lines 10215--10216
+[]\OT1/cmr/m/n/10 This mech-a-nism is sim-ply the $[]$
+ []
+
+[265] [266] [267] [268] [269] [270] [271] [272]
+Overfull \hbox (5.0393pt too wide) in paragraph at lines 10500--10501
+[]\OT1/cmr/m/n/10 With \OT1/cmr/bx/n/10 tem-plate classes\OT1/cmr/m/n/10 , $[]$, you need to $[]$, as shown in [] 
+ []
+
+[273] [274]
+Overfull \hbox (5.57079pt too wide) in paragraph at lines 10523--10524
+[]\OT1/cmr/bx/n/10 Template classes \OT1/cmr/m/n/10 are the \OT1/cmr/bx/n/10 tem-pla-tized ver-sions \OT1/cmr/m/n/10 of C++ classes. They are blueprints of blueprints. 
+ []
+
+[275] [276] [277] [278]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 10662.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 10662.
+
+[279] [280]
+Overfull \hbox (30.54453pt too wide) in paragraph at lines 10730--10731
+[]\OT1/cmr/m/n/10 In \OT1/cmr/bx/n/10 les-son 9\OT1/cmr/m/n/10 , we've learned that \OT1/cmr/bx/n/10 declar-ing \OT1/cmr/m/n/10 a \OT1/cmr/bx/n/10 class mem-ber [][]\OT1/cmtt/m/n/10 static []\OT1/cmr/m/n/10 re-sults in the $[]$
+ []
+
+
+Overfull \hbox (41.78366pt too wide) in paragraph at lines 10734--10735
+[]\OT1/cmr/m/n/10 It's sim-i-lar with a \OT1/cmr/bx/n/10 tem-plate class \OT1/cmr/m/n/10 too, save for the fact that a \OT1/cmr/bx/n/10 static mem-ber \OT1/cmr/m/n/10 is $[]$
+ []
+
+[281] [282] [283] [284] [285]
+Overfull \hbox (48.89694pt too wide) in paragraph at lines 10980--10981
+[]\OT1/cmr/bx/n/10 DON'T \OT1/cmr/m/n/10 for-get that a \OT1/cmr/bx/n/10 static mem-ber \OT1/cmr/m/n/10 con-tained within a \OT1/cmr/bx/n/10 tem-plate class \OT1/cmr/m/n/10 is \OT1/cmr/bx/n/10 static \OT1/cmr/m/n/10 for $[]$
+ []
+
+[286] (./notes.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1275,21 +1402,21 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `notes.out' has not changed.
-(rerunfilecheck)             Checksum: DB26AFBA72ED6E8DF5D806E2B38A847B;39280.
+(rerunfilecheck)             Checksum: 4C6977A99D56B0B76BDD23F706CFE140;50378.
  ) 
 Here is how much of TeX's memory you used:
- 24782 strings out of 469515
- 464951 string characters out of 5470808
- 868793 words of memory out of 5000000
- 52575 multiletter control sequences out of 15000+600000
+ 24963 strings out of 469515
+ 467499 string characters out of 5470808
+ 868825 words of memory out of 5000000
+ 52632 multiletter control sequences out of 15000+600000
  636668 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,9n,118p,607b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on notes.pdf (220 pages, 519360 bytes).
+Output written on notes.pdf (286 pages, 618312 bytes).
 PDF statistics:
- 2120 PDF objects out of 2487 (max. 8388607)
- 1847 compressed objects within 19 object streams
- 497 named destinations out of 1000 (max. 500000)
- 1421 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2653 PDF objects out of 2984 (max. 8388607)
+ 2309 compressed objects within 24 object streams
+ 621 named destinations out of 1000 (max. 500000)
+ 1757 words of extra memory for PDF output out of 10000 (max. 10000000)
 

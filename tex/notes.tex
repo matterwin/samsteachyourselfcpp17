@@ -2884,7 +2884,9 @@ int main() {
 \end{verbatim}
 \end{itemize}
 
+\newpage
 \section{Organizing Code with Functions}
+Don't need this personally.
 
 \newbp
 \section{Pointers and References}
@@ -8744,6 +8746,2239 @@ explicit operator int()
 \newpage
 
 \subsection{Binary Operators}
+\begin{itemize}
+	\item \textbf{Operators} that function on \textbf{two operands} are called \vocab{binary operators}.
+
+	\item The \textbf{definition} of a \textbf{binary operator} implemented as a \textbf{global function} or a \textbf{static member function} is the following:
+
+	\begin{verbatim}
+return_type operator_type (parameter1, parameter2);
+	\end{verbatim}
+
+\item The \textbf{definition} of a \textbf{binary operator} implemented as a \textbf{class member} is 
+
+\begin{verbatim}
+return_type operator_type (paramater);
+\end{verbatim}
+
+\item The reason the \textbf{class member version} of a \textbf{binary operator} accepts \textbf{only one parameter} is that the \textbf{second parameter} is usually derived from the attributes of the class itself.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Type of Binary Operators}
+\begin{itemize}
+	\item Here is a table of \textbf{binary operators} that can be \textbf{overloaded} or \textbf{redefined}:
+
+		\begin{tabular}{p{0.48\linewidth} p{0.48\linewidth}}
+			\hline
+			Operator & Name\\
+			\hline
+			, & Comma \\ 
+			!=	&	Inequality \\
+			\%	&	Modulus\\
+			\%=	&	Modulus/Assignment\\
+			\&	&	Bitwise AND\\
+			\&\&	&	Logical AND\\
+			\&=	&	Bitwise AND/assignment\\
+			*	&	Multiplication\\
+			*=	&	Multiplication/assignment\\
+			+	&	Addition\\
+			+=	&	Addition/assignment\\
+			-	&	Subtraction\\
+			-=	&	Subtraction/assignment\\
+			\verb|->|*	&	Pointer-to-member selection\\
+			/	&	Division\\
+			/=	&	Division/assignment\\
+			\verb|<|	& Less than\\
+			\verb|<<|	& Left shift\\
+			\verb|<<=|	& Left shift/assignment\\
+			\verb|<=|	& Less than or equal to\\ 
+			=	&	Assignment, Copy Assignment and Move Assignment\\
+			==	&	Equality\\
+			\verb|>|	& Greater than\\
+			\verb|>=|	& Greater than or equal to\\ 
+			\verb|>>|	& Right shift\\
+			\verb|>>=|	& Right shift/assignment\\
+			\verb|^|	&	Exclusive OR\\
+			\verb|^=|	&	Exclusive OR/assignment\\
+			\verb+|+      & Bitwise inclusive OR \\
+			\verb+|=+     & Bitwise inclusive OR/assignment \\
+			\verb+||+     & Logical OR \\
+			\verb|[]|	&	Subscript operator\\
+			\hline
+		\end{tabular}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Programming Binary Addition (a + b) and Subtraction (a - b) Operators}
+\begin{itemize}
+	\item Similar to the \textbf{increment/decrement operators}, the \textbf{binary plus} and \textbf{minus}, when defined, enable you to add or subtract the value of a supported data type from an \textbf{object} of the class that \textbf{implements these operators}.
+
+	\item Say for our \verb|class Date| object we want to increase the date by say 5 says instead of just 1 (increment previously).
+
+		\fbox{\textbf{Listing 12.4} Binary Addition Operator}
+
+	\pbreak
+
+\item Note: now we have the \textbf{binary operator} mechanism available to us we can make use of adding strings/instances together that are of class \verb|MyString| type:
+
+	\begin{verbatim}
+MyString Hello("Hello ");
+MyString World(" World");
+MyString HelloWorld(Hello + World);
+	\end{verbatim}
+
+\item We do so be \textbf{defining operator (+)}
+	\begin{verbatim}
+MyString operator+ (const MyString& addThis)
+{
+	MyString newString;
+
+	if (addThis.buffer != NULL)
+	{
+		newString.bugger = new char[GetLength() + strlen(addThis.buffer) + 1];
+		strcpy(newString.buffer, buffer);
+		strcat(newString.buffer, addThis.buffer);
+	}	
+
+	return newString;
+}
+	\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Implementing Addition Assignment (+=) and Subtraction Assignment (-=) Operators}
+\begin{itemize}
+	\item The \textbf{addition assignment operators} allows syntax such as "a += b;" that allows the programmer to increment the value of an \textbf{object} \verb|a| by an amount \verb|b|.
+
+	\item In doing this, the utility of the \textbf{addition assigment operator} is that it can be \textbf{overloaded} to accept different types of parameter \verb|b|.
+
+	\item \fbox{\textbf{Listing 12.5}} that follows allows you to add an \textbf{integer value} to a \verb|Date| \textbf{object}.
+
+		\pbreak
+
+\item Your \verb|class Date| now allows users to \textbf{add} or \textbf{remove} days from it as if they are dealing with \textbf{integers} using \textbf{addition} or \textbf{subtraction assignment operators} that take an \verb|int| \textbf{\underline{as a parameter}}.
+
+	\item You can even provide \textbf{overloaded verions} of the \textbf{addition assignment operator (+=)} that work with an \textbf{instance} of a \textbf{fictitious class} \verb|Days|:
+
+	\begin{verbatim}
+void operator+= (const Days& daysToAdd)
+{
+	day += daysToAdd.GetDays();
+}
+	\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\begin{tcolorbox}
+	The
+	\begin{itemize}
+		\item multiplication assignment *=
+		\item division assignment /=
+		\item modulus assignment \%=
+		\item subtraction assignment -=
+		\item left-shift assignment $<<=$
+		\item right-shift assignment $>>=$
+		\item XOR assigment \verb|^=|
+		\item bitwise inclusive OR assignment \verb+|=+
+		\item bitwise AND assignment \&=
+	\end{itemize}
+
+	have a similar syntax to the \textbf{addition assignment operator} shown in \textbf{Listing 12.5}
+\end{tcolorbox}
+
+\newpage
+
+\subsubsection{Overloading Equality (==) and Inequality (!=) Operators}
+\begin{itemize}
+	\item What do you expect when the user of \verb|class Date| compares one \textbf{instance} to another:
+		\begin{verbatim}
+if (date1 == date2)
+{
+	// do something
+}
+else {}
+		\end{verbatim}
+
+\item In the \textbf{absence of an equality operator ==}, the compiler simply performs a \textbf{binary comparion} of the \textbf{two objects} and returns \verb|true| when they are \textbf{exactly identical}.
+
+	\item A binary comparison checks whether the \textbf{raw bytes} of the two objects are identical in memory.
+
+	\item This is different from \textbf{logical equality}: two objects can represent the same value but still have different byte representations (e.g., if they contain pointers or padding bytes).
+
+	\item For a simple class such as \verb|Date| containing only \verb|int| members, two objects with the same values will typically have the same byte representation and therefore compare as identical. However that isnt always the case for other objects.
+
+	\item Now if you don't even supply the \textbf{equality operator ==} and you compare two objects, then you will get a compiler error (for modern c++ compilers) just like all the other operators on objects. 
+
+		\pbreak
+
+	\item So, This \textbf{binary comparison} will work for instances of classes containing simple data types (like the \verb|Date| class as of now), but it will \textbf{not work} if the class in question has a \textbf{\underline{non-static}} string member (\verb|char*|), such as \verb|MyString| in \textbf{Listing 9.9}.
+
+	\item Wehn \textbf{two instances} of \verb|class MyString| are compared, a \textbf{binary comparison} of the \textbf{member attributes} would actually compare the \textbf{member string pointer values} (\verb|MyString::buffer|).
+
+\item These would \textbf{not be equal} even when the \textbf{strings are identical} in \textbf{content}.
+
+\item Comparisons involving \textbf{two instances} of \verb|MyString| would return \verb|false| consistently.
+
+\item We solve this by \textbf{defining} \textbf{\fbox{comparison operators}} like so:
+
+	\begin{verbatim}
+bool operator== (const ClassType& compareTo)
+{
+	// comparison code here, return true if equal else false
+}
+	\end{verbatim}
+
+\item The \textbf{\fbox{inequality operator}} can reuse that structure:
+\begin{verbatim}
+bool operator!= (const ClassType& compareTo)
+{
+	// comparison code here, return true if not equal else false
+}
+\end{verbatim}
+
+\item The \fbox{\textbf{inequality operator}} can be the \textbf{\fbox{inverse (logical NOT)}} of the result of the \textbf{equality operator} (obviously)
+
+\item \fbox{\textbf{Listing 12.6} Operators == and !=}
+
+	\end{itemize}
+
+	\newpage
+
+\subsubsection{Overloading $<$, $>$, $<=$, and $>=$ Operators}
+\begin{itemize}
+	\item Similarly from \textbf{Listing 12.6}, we can change this to the $<$, $>$, $<=$, and $>=$ operators for comparing objects.
+
+	\item We can do those conditional checks respectively akin to:
+	\begin{verbatim}
+if (date1 < date2) { // ... }
+	or
+if (date1 <= date2) { // ... }
+	or
+if (date1 > date2) { // ... }
+	or
+if (date1 >= date2) { // ... }
+	\end{verbatim}
+
+\item \fbox{\textbf{Listing 12.7} Overloading $<$, $>$, $<=$, and $>=$ Operators}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Overloading Copy Assignment Operator (=)}
+\begin{itemize}
+	\item There are times when you want to \textbf{assign the contents} of an \textbf{instance} of a class to another like this:
+		\begin{verbatim}
+Date holiday(12, 25, 2016);
+Date anotherHoliday(1, 1, 2017);
+anotherHoliday = holiday;	// uses copy assignment operator
+		\end{verbatim}
+
+	\item The \textbf{assignment} invokes the \textbf{default copy assignment operator} that the compiler has built in to your class when you have \textbf{not supplied one}.
+
+	\item Depending on the nature of the class, the \textbf{default copy assignment opeartor} might be inadequate, especially if your class is managing a resource that will not be copied.
+
+	\item Similar problem to the \textbf{default copy constructor} and not actually copying its own resource.
+
+	\item So, to ensure \textbf{deep copies} as with the \textbf{copy constructor}, you need to specify an accompanying \textbf{copy assignment operator}:
+
+\begin{verbatim}
+ClassType& operator= (const ClassType& copySource)
+{
+	if (this != &copySource)	// protection against copy into self
+	{
+		// copy assignment operator implementation
+	}
+	return *this;
+}
+\end{verbatim}
+
+\item \textbf{Deep copies} are important if your class \textbf{encapsulates} a \textbf{raw pointer}, such as \verb|class MyString| shown in \textbf{Listing 9.9}.
+
+\item To \textbf{ensure deep copy} during \textbf{assignments}, define a \textbf{\fbox{copy assignment operator}} as shown in \textbf{\fbox{Listing 12.8}} 
+
+\item \fbox{\textbf{Listing 12.8} A Better 'class MyString' from \textbf{Listing 9.9} with a Copy Assignment Operator =}
+
+	\newpage
+
+\item Notice we did a \vocab{type conversion} (next lesson), which means we can go from\\
+\verb|MyString| $\rightarrow$ \verb|cont char*| $\rightarrow$ \verb|output| like so:
+
+\begin{verbatim}
+class MyString
+{
+    char buffer[100];
+
+public:
+    operator const char*()
+    {
+        return buffer;
+    }
+};
+
+// we can do
+
+MyString str;
+printf("%s", str);
+
+// Even though printf expects a const char*, C++ automatically calls:
+
+str.operator const char*()
+\end{verbatim}
+
+\item The above \verb|operator const char*| replaced the \verb|GetString()| from before and we used this operator when doing
+	\begin{verbatim}
+cout << string1 << string2 << endl;
+	\end{verbatim}
+
+\pbreak
+
+\item The \textbf{copy assignment operator} is similar \textbf{in function} to a \textbf{copy constructor} and performs a starting check to ensure that the same object is not both the copy source and destination.
+
+\item Look at it for more important details.
+
+\end{itemize}
+	\begin{tcolorbox}
+		\begin{itemize}
+			\item To create a class that \textbf{cannot be copied}, delcare the \textbf{copy constructor} \underline{and} \textbf{copy assignment operator} \verb|private|.
+
+			\textbf{Declaration as } \verb|private| \underline{without implementation} is \textbf{sufficient} for the compiler to \textbf{throw error} on all attempts at \textbf{copying this class} via passing to a \textbf{function by value} or \textbf{assigning one instance} into another.
+		\end{itemize}
+	\end{tcolorbox}
+
+\newpage
+
+\subsubsection{Subscript Operator ([])}
+\begin{itemize}
+	\item The \textbf{operator} that allows \textbf{array-style} \verb|[]| \textbf{access} to a \textbf{\underline{class}} is called \vocab{subscript operator}.
+
+	\item The typical syntax of a \fbox{\textbf{subscript operator}} is:
+
+		\begin{verbatim}
+return_type& operator [] (subscript_type& subscript);
+		\end{verbatim}
+
+	\item So when creating a class such as \verb|MyString| that encapsulates a \textbf{dynamic array} class of characters in a \verb|char* buffer|, a \textbf{subscript operator} makes it really easy to randomly access individual characters in the buffer:
+
+		\begin{verbatim}
+class MyString
+{
+	// ... other members
+public:
+	/* const */ char& operator [] (int index) /* const */
+	{
+		// return the char at position index in buffer
+	}
+};
+		\end{verbatim}
+
+	\item \textbf{Listing 12.9} shoes how the \textbf{subscript operator ([])} helps the user in iterating through the chars contained in an \textbf{instance} of \verb|MyString| using \textbf{normal array semantics}.
+
+	\item \fbox{\textbf{Listing 12.9}}
+
+		\pbreak
+
+	\item Friendly recall:
+	\begin{verbatim}
+	// recall: const here tells us
+	// "This member function promises not to modify the object it belongs to."
+	int GetLength() const 
+	{
+
+	}
+	\end{verbatim}
+
+\item Using the keyword \fbox{\textbf{const}} is important when programming \textbf{operators}.
+
+	In \textbf{Listing 12.9} restricted the \textbf{return value} of \textbf{subscript operator []} to \textbf{const char\&}
+
+	\begin{verbatim}
+	const char& operator[] (int index) const
+	{
+		if (index < GetLength())
+			return buffer[index];
+
+		return buffer[0]; // failed
+	}
+	\end{verbatim}
+
+\item The program works and compiles even without the \textbf{const} keywords, yet the reason you have it there is to avoid this code:
+
+	\begin{verbatim}
+MyString sayHello("Hello World");
+sayHello[2] = 'k';	// error: operator[] is const
+	\end{verbatim}
+
+\item By using \textbf{const} you are protecting interal member \verb|MyString::buffer| (so the rightmost \verb|const|) from \textbf{direct modifications} from the outisde via \textbf{operator []}
+
+\begin{itemize}
+    \item The \textbf{leftmost} \verb|const| applies to the \textbf{return type}, making the returned object read-only.
+
+    \item The \textbf{rightmost} \verb|const| applies to the \textbf{member function}, indicating that it does not modify the object (\verb|*this|).
+
+    \item The two are \textbf{independent}: a function may have either, both, or neither, depending on its purpose.
+\end{itemize}
+
+\begin{verbatim}
+char& operator[](int index);                  // neither
+const char& operator[](int index);            // left only
+char& operator[](int index) const;            // right only
+const char& operator[](int index) const;      // both
+\end{verbatim}
+
+\item In addition to classifying the \textbf{return value} as \textbf{const}, you can also declare the \textbf{member function} as \textbf{const} (rightmost \verb|const|) to ensure that it \textbf{cannot modify} the class's member attributes.
+
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item When implementing \textbf{\fbox{subscript operators}}, you can imporve on the version shown in \textbf{Listing 12.9}.
+	\item The one is an implementation of a \textbf{single subscript operator} that works for both \textbf{reading from} and \textbf{writing to} the slots in the \textbf{dynamic array}.
+
+	\pbreak
+
+	\item You can, however, implement \textbf{two subscript operators} --- one as a \textbf{const} function and the other as a \textbf{non-const} one:
+		\begin{verbatim}
+char& operator[] (int index);	// use to write / change buffer at index
+char& operator[] (int index) const;	// used only for accessing char at index
+		\end{verbatim}
+
+	\item The compiler will invoke the \textbf{const function} for \textbf{\underline{read operations}} and the \textbf{non-const} version for operations that \textbf{\underline{write}} into the \verb|MyString| object.
+
+	\item Thus, you can (if you want to) have separate functinalities in the two \textbf{subscript operations}.
+
+		\pbreak
+
+	\item There are other \textbf{binary operators} (listed in Table 12.2) that can be \textbf{redefined} or \textbf{overloaded}, but this book does not dicuss them futher, but it's definition/logic is similar.
+\end{itemize}
+
+\pbreak
+
+\begin{itemize}
+	\item Other \textbf{operators}, such as the \fbox{\textbf{logical operators}} and the \textbf{\fbox{bitwiseop operators}}, need to be programmed if the purpose of the class would be \textbf{enhanced} by having them.
+\end{itemize}
+
+\newpage
+
+\subsection{Function Operator ()}
+\begin{itemize}
+	\item The \textbf{operator ()} that make \textbf{objects} behave like a \textbf{function} is called a \vocab{function operator}.
+
+	\item They find application in the \textbf{standard template library (STL)} and are typically used in \textbf{STL algorithms}.
+
+	\item Their usage can include \textbf{making decisions}; such \textbf{function objects} are typically called \vocab{unary} or \vocab{binary predicates}, depending on the \textbf{number of operands} they work on.
+
+	\item \fbox{\textbf{Listing 12.10} A Function Object Created Using Operator ()}
+
+	\pbreak
+
+\item Note how the compiler allows the use of \verb|object displayFuncObj| as a \verb|function| in Line 19 ish by \textbf{implicitly converting} what looks like a \textbf{function call} to a \textbf{call} to \textbf{operator()}.
+\end{itemize}
+
+\newpage
+
+\subsection{Move Constructor and Move Assignment Operator for High Performance Programming}
+\begin{itemize}
+	\item The \vocab{move constructor} and the \vocab{move assignment operators} are performance optimization features that have become a part of the \textbf{standard} in C++11, ensuring that \textbf{temporary values} (\vocab{rvalues} that don't exist beyong the statement) are not wastefully copied.
+
+	\item This is particularly useful when handling a \textbf{class} that manages a \textbf{dynamically allocated} resource, such as a \textbf{dynamic array class} or a \textbf{string class}.
+\end{itemize}
+
+\pbreak
+
+\subsubsection{The Problem of Unwanted Copy Steps}
+\begin{itemize}
+	\item Take a look at the \fbox{\textbf{addition operator+}} as implemented in \textbf{Listing 12.4}.
+
+		Notice that is actually \textbf{creates a copy} and \textbf{returns it}, the following lines of code would be valid exmaples of easy string concatenation:
+		\begin{verbatim}
+MyString Hello("Hello ");
+MyString World("World");
+MyString CPP(" of C++");
+MyString sayHello(Hello + World + CPP);	// operator+, copy constructor
+MyString sayHelloAgain("overwrite this");
+sayHelloAgain = Hello + World + CPP;	// operator+, copy constructor, copy assignment operator=
+		\end{verbatim}
+
+		\item This simple construct that makes concatenating three strings easy uses \textbf{binary addition operator+}:
+
+			\begin{verbatim}
+MyString operator+ (const MyString& addThis)
+{
+	MyString newStr;
+
+	if (addThis.buffer != NULL)
+	{
+		// copy into newStr
+	}
+
+	return newStr;	\\ return copy by value, invoke copy constructor
+}
+			\end{verbatim}
+
+		\item While making it easy to concatenate the strings, the \textbf{\fbox{addition operator+}} can cause \underline{\textbf{performance problems}}
+
+		\item The creation of \verb|sayHello| requires the execution of the \textbf{addition operator twice}.
+
+		\item Each execution of \verb|operator+| results in the creation of a \textbf{temporary copy} as a \verb|MyString| is returned \textbf{by value}, thus causing the execution of the \textbf{copy constructor}.
+
+		\item The \textbf{copy constructor} executes a \textbf{deep copy} --- to a \textbf{temporary value} that does \textbf{not exist after the expression}.
+
+		\item Thus, the expression results in \textbf{temporary copies} (\fbox{\textbf{rvalues}}, for the pursits) that are \textbf{not ever required after} the statement and hence are performance bottleneck forced by C++. Well, until recently.
+\end{itemize}
+
+\newpage
+Another explanation of the problem:
+
+\begin{itemize}
+    \item The expression \verb|Hello + World + CPP| is evaluated as \verb|(Hello + World) + CPP|, so the addition operator \verb|operator+| is called \textbf{twice}.
+
+\item Each call to \verb|operator+| creates a \textbf{local} \verb|MyString| object (e.g., \verb|newStr|) to hold the concatenated result. Since it is returned \textbf{by value}, a temporary result is produced for use in the surrounding expression.
+
+    \item Since \verb|operator+| returns its result \textbf{by value}, the temporary object is copied (via the \textbf{copy constructor}) to the caller.
+
+    \item The \textbf{copy constructor} performs a \textbf{deep copy}, allocating new memory and copying the string data, which can be expensive.
+
+    \item These temporary objects exist only for the duration of the expression and are immediately destroyed afterwards, making the deep copies unnecessary work.
+
+    \item Consequently, expressions involving repeated \verb|operator+| calls can create multiple temporary objects and deep copies, leading to reduced performance.
+
+\end{itemize}
+
+Note
+\begin{itemize}
+    \item The object \verb|newStr| is a \textbf{local variable} and is destroyed when \verb|operator+| returns.
+
+    \item Since the function returns \textbf{by value}, the caller cannot receive the local object directly. Instead, a \textbf{new object} is created from \verb|newStr| using the \textbf{copy constructor} (or the move constructor/copy elision in modern C++).
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item This problem has now been finally resolved in C++11 in which the compiler specifically rezognizies \textbf{temporaries} and uses \vocab{move constructors} and \vocab{move assignment operators}, where supplied by the \textbf{programmer}.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Declaring a Move Constructor and Move Assignment Operator}
+\begin{itemize}
+	\item The syntax of the \fbox{\textbf{move constructor}} is as follows:
+
+		\begin{verbatim}
+class Sample
+{
+private:
+	Type* ptrResource;
+
+public:
+	Sample(Sample&& moveSource)	// move constructor, note &&
+	{
+		ptrResource = moveSource.ptrResource;	// take ownership, start move
+		moveSource.ptrResource = NULL;
+	}
+
+	Sample& operator= (Sample&& moveSource)	// move assignment operator, note &&
+	{
+		if (this != &moveSource)
+		{
+			delete[] ptrResource;	// free own resource
+			ptrResource = moveSource.ptrResource;	// take ownership, start move
+			moveSource.ptrResource = NULL;	// copy assignment
+		}
+	}
+
+	Sample();	// default constructor
+	Sample(const Sample& copySource);	// copy contructor
+	Sample& operator= (const Sample& copySource);	// free move source of ownership
+};
+		\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsection*{Quick recall on virtual methods (not for this move constructor/operator section}
+
+\subsubsection*{Virtual Methods}
+\begin{itemize}
+    \item A \textbf{virtual method} is a member function in a base class that can be overridden by derived classes.
+
+    \item When called through a base class pointer or reference, the correct derived class implementation is selected at \textbf{runtime}.
+\end{itemize}
+
+\begin{verbatim}
+class Animal
+{
+public:
+    virtual void Speak()
+    {
+        cout << "Animal sound\n";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    void Speak() override
+    {
+        cout << "Woof\n";
+    }
+};
+
+int main()
+{
+    Animal* a = new Dog();
+    a->Speak();   // Calls Dog::Speak()
+}
+\end{verbatim}
+
+
+\subsubsection*{Virtual Destructor}
+\begin{itemize}
+    \item A \textbf{virtual destructor} ensures that when a derived object is deleted through a base class pointer, the derived class destructor is called first.
+
+    \item A base class intended for inheritance should usually have a virtual destructor.
+\end{itemize}
+
+\begin{verbatim}
+class Animal
+{
+public:
+    virtual ~Animal()
+    {
+        cout << "Animal destroyed\n";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+    ~Dog()
+    {
+        cout << "Dog destroyed\n";
+    }
+};
+
+int main()
+{
+    Animal* a = new Dog();
+    delete a;
+}
+\end{verbatim}
+
+Output:
+
+\begin{verbatim}
+Dog destroyed
+Animal destroyed
+\end{verbatim}
+
+
+\subsubsection*{Virtual Constructor}
+\begin{itemize}
+    \item C++ does \textbf{not support virtual constructors}.
+
+    \item Constructors create objects, and virtual dispatch requires an object to already exist.
+
+    \item Instead, the \textbf{virtual constructor pattern} is implemented using virtual methods such as \verb|clone()|.
+\end{itemize}
+
+\begin{verbatim}
+class Shape
+{
+public:
+    virtual Shape* clone() = 0;
+};
+
+class Circle : public Shape
+{
+public:
+    Shape* clone() override
+    {
+        return new Circle(*this);
+    }
+};
+\end{verbatim}
+
+
+\subsubsection*{Pure Virtual Functions and Abstract Classes}
+\begin{itemize}
+    \item A \textbf{pure virtual function} has no implementation in the base class and is declared using \verb|= 0|.
+
+    \item A class containing at least one pure virtual function is called an \textbf{abstract class}.
+
+    \item Abstract classes cannot be instantiated directly.
+\end{itemize}
+
+\begin{verbatim}
+class Shape
+{
+public:
+    virtual double Area() = 0;
+};
+
+class Circle : public Shape
+{
+private:
+    double radius;
+
+public:
+    Circle(double r) : radius(r) {}
+
+    double Area() override
+    {
+        return 3.14 * radius * radius;
+    }
+};
+\end{verbatim}
+
+This is invalid:
+
+\begin{verbatim}
+Shape s;   // ERROR
+\end{verbatim}
+
+This is valid:
+
+\begin{verbatim}
+Shape* s = new Circle(5);
+cout << s->Area();
+\end{verbatim}
+
+
+\subsubsection*{Summary of Virtual Features}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Feature & Syntax & Purpose \\
+\hline
+Virtual method & \verb|virtual void func();| &
+Allows derived override at runtime \\
+\hline
+Override & \verb|void func() override;| &
+Explicitly replaces base method \\
+\hline
+Virtual destructor & \verb|virtual ~Class();| &
+Ensures proper cleanup through base pointer \\
+\hline
+Virtual constructor & Not supported &
+Use \verb|clone()| pattern instead \\
+\hline
+Pure virtual method & \verb|virtual void func() = 0;| &
+Forces derived classes to implement \\
+\hline
+Abstract class &
+Contains pure virtual methods &
+Cannot create objects directly \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsubsection*{Common Polymorphic Base Class Pattern}
+
+\begin{verbatim}
+class Base
+{
+public:
+    virtual ~Base() {}
+    virtual void Function() = 0;
+};
+
+class Derived : public Base
+{
+public:
+    ~Derived() {}
+
+    void Function() override {}
+};
+\end{verbatim}
+
+\newpage
+(back to move section)
+\begin{itemize}
+	\item Thus, the \textbf{declaration} of the \textbf{\fbox{move constructor}} and \fbox{\textbf{assignment operator}} are different from the \textbf{regular copy constructor} and \textbf{copy assignment operator} in that the \textbf{input parameter} is a \textbf{type} \verb|Sample&&|.
+
+	\item Additionally, as the \textbf{input parameter} is the \textbf{move-source}, it \textbf{cannot be} a \verb|const| parameter as it is \textbf{modified}.
+
+	\item \textbf{Return values} remain the same, as these are \textbf{overloaded} versions of the \textbf{constructor} and the \textbf{assignment operator}, respectively. 
+\end{itemize}
+
+\pbreak
+
+\begin{itemize}
+	\item C++11 compilant compilers ensure that for \textbf{rvalue temporaries} the \textbf{move constrcturos} is used instead of the \textbf{copy constructor} and the \textbf{move assignment operator} is invoked instead of the \textbf{copy assignment operator}.
+
+	\item In your implementation of these two, you ensure that instead of \textbf{copying}, you are simply \textbf{moving} the resource from the \textbf{source} to the \textbf{destination}.
+
+	\item \boxednote{
+	\textbf{Listing 12.11} 'class MyString' with Move Constructor and Move Assignment Operator in addition to Copy Constructor and Copy Assignment Operator}.
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item Note from \textbf{Listing 12.11} C++17 made \vocab{copy elision mandatory} in \textbf{many return-by-value cases}.
+
+	So, we only see as output:
+	\begin{verbatim}
+Constructor called for: Hello
+Constructor called for: World
+Constructor called for:  of C++
+Constructor called for: overwrite this
+operator+ called:
+Default constructor called
+operator+ called:
+Default constructor called
+Move assignment op. moves: Hello World of C++
+	\end{verbatim}
+
+\item Notice there is no Move constructor cout here.
+
+	\item The reason the \textbf{move constructor} is not called is because C++17 performs \vocab{copy elision} in this situation. The compiler constructs the returned \verb|MyString| object directly in its final destination instead of creating a temporary object and moving it.
+
+\item Therefore, the statement \verb|return newStr;| does not require a copy or move constructor call. The local object \verb|newStr| is optimized away, and its storage is used directly for the returned object.
+
+\item The \textbf{move assignment operator} is still called because the final temporary result of \verb|Hello + World + CPP| must be assigned to the already existing object \verb|sayHelloAgain|.
+\end{itemize}
+
+\newpage
+
+\subsection{User Defined Literals}
+\begin{itemize}
+	\item \textbf{\fbox{Literal constants}} were introduced in Lesson 3. Here are some examples of a few:
+	\begin{verbatim}
+int bankBalance = 10000;
+double pi = 3.14;
+char firstAlphabet = 'a';
+const char* sayHello = "Hello!";
+	\end{verbatim}
+
+\item In the preceding code, 10000, 3.14, 'a', and "Hello!" are all \textbf{literal constants}.
+
+\item C++11 extended literals by allowed you to define your own literals.
+
+\item Example, you want all your temperatures to be stored and operated using a scale called Kevin. You may now declare all your temperatures using a syntax similar to the following:
+\begin{verbatim}
+Temperature k1 = 32.15_F;
+Temperature k2 = 0.0_C;
+\end{verbatim}
+
+\item Using \textbf{literals} \verb|_F| and \verb|_C| that \underline{\textbf{you have defined}}, you have made your application a lot simpler to read and therefore maintain.
+
+	\pbreak
+
+\item To \textbf{define your own literal}, you \textbf{define} \verb|operator ""| like this:
+\begin{verbatim}
+ReturnType operator"" YourLiteral(ValueType value)
+{
+	// conversion code here
+}
+\end{verbatim}
+\end{itemize}
+
+\pbreak
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item Dependeing on the nature of the \textbf{user defined literal}, the \verb|ValueType| parameter would be restricted to one of the following:
+			\begin{itemize}
+				\item \verb|unsigned long int| for \textbf{integer literal}
+				\item \verb|long double| for \textbf{floating point literal}
+				\item \verb|char, wchar_t, char16_T, char32_t| for \textbf{character literal}
+				\item \verb|const char*| for \textbf{raw string literal}
+				\item \verb|const char*| together with \verb|size_t| for \textbf{string literal}
+				\item \verb|wchar_t*| together with \verb|size_t| for \textbf{string literal}
+				\item \verb|char16_t*| together with \verb|size_t| for \textbf{string literal}
+				\item \verb|char32_t*| together with \verb|size_t| for \textbf{string literal}
+			\end{itemize}
+	\end{itemize}
+\end{tcolorbox}
+
+\begin{itemize}
+	\item \fbox{\textbf{Listing 12.12} shows a user defined literal that converts types}.
+\end{itemize}
+
+\newpage
+
+\subsection{Operators That Cannot Be Overloaded}
+\begin{itemize}
+	\item \fbox{\textbf{Table 12.3} Operators that CANNOT be Overloaded or Redefined}\\
+
+	\begin{tabular}{p{0.48\linewidth} p{0.48\linewidth}}
+		\hline
+		Operator & Name\\
+		\hline
+		.	& Member selection\\
+		.*	& Pointer-to-member selection\\
+		::	& Scope resolution\\
+		? :	& Conditional ternary operator\\
+		sizeof	& Gets the size of an object/class type	\\
+		\hline
+	\end{tabular}
+
+	\pbreak
+
+\item \textbf{DO} program as many operators as would help making using your class easy, but not more.
+\item \textbf{DO} mark \textbf{conversion operators} as \verb|explicit| to avoid \textbf{implicit conversions}.
+\item \textbf{DO} always program a \textbf{copy assignment operator} (with a \textbf{copy constructor} and \textbf{destructor}) for a class that contains \textbf{raw pointer members}.
+\item \textbf{DO} always program a \textbf{move assignment operator} (and \textbf{move constructor}) for classes that manage \textbf{dynamically allocated resources}, such as an array of data, when using a C++11-compliant compiler.
+
+	\pbreak
+
+\item \textbf{DON'T} forget that the compiler provides a \textbf{default copy assignment operator} and \textbf{copy constructor} if you don't supply these, and they \textbf{won't ensure deep copies} of any \textbf{raw pointers} contained within the class.
+\item \textbf{DON'T} forget that if you don't supply a \textbf{move assignment operator} or \textbf{move constructor}, the compiler \textbf{does not create these for you}, but isntead falls back on the \textbf{regular copy assingment operator} and \textbf{copy constructor}.
+	
+\end{itemize}
+
+\newpage
+
+\section{Casting Operators}
+\begin{itemize}
+\item \textbf{Casting} is the process of converting an object or value from one data type to another, changing how the compiler interprets and uses that value.
+
+\item \textbf{Operators} that change the \textbf{interpretation} of an \underline{\textbf{object}} are called \vocab{casting operators}.
+\end{itemize}
+
+\pbreak
+
+\subsection{The Need for Casting}
+\begin{itemize}
+    \item Old programs and lots of modules working together inevitably call for the need to cast values.
+
+    \item A common example is when using C library functions such as \verb|malloc()|, \verb|calloc()|, and \verb|realloc()|, which return a \verb|void*| pointer. Since \verb|void*| has no associated data type, it must be cast to the appropriate pointer type before use in C++.
+
+\begin{verbatim}
+int* arr = (int*)malloc(10 * sizeof(int));
+
+double* values = (double*)calloc(20, sizeof(double));
+
+char* buffer = (char*)realloc(arr, 20 * sizeof(char));
+\end{verbatim}
+
+    \item Although explicit casts are required in these cases, C++ programs should generally prefer \verb|new| and \verb|delete| over the C memory allocation functions, as they correctly invoke constructors and destructors for class objects.
+
+	\item C++ devs don't like
+		\begin{verbatim}
+int* intArray = (int*)staticStr;
+		\end{verbatim}
+
+	because this would typically give an error compiled with a C++ compiler:
+
+	\begin{verbatim}
+char* staticStr = "Hello World!";
+int* intArray = staticStr;	// error: cannot convert char* to int*
+	\end{verbatim}
+\end{itemize}
+
+\newpage
+\subsection{Examples of C++ Casts}
+
+\begin{itemize}
+    \item C++ provides four explicit cast operators: 
+		\begin{itemize}
+			\item \verb|static_cast|, 
+			\item \verb|dynamic_cast|, 
+			\item \verb|const_cast|, and 
+			\item \verb|reinterpret_cast|. 		
+		\end{itemize}
+
+		Each is intended for a specific purpose.
+\end{itemize}
+
+\newpage 
+\paragraph{1. \texttt{static\_cast}}
+Used for compile-time conversions between related types.
+
+\begin{verbatim}
+class Animal
+{
+public:
+    virtual ~Animal() {}
+};
+
+class Dog : public Animal
+{
+public:
+    void Bark()
+    {
+        cout << "Woof!" << endl;
+    }
+};
+
+Animal* animal = new Dog();
+
+Dog* dog = static_cast<Dog*>(animal);
+dog->Bark();
+\end{verbatim}
+
+\newpage 
+
+\paragraph{2. \texttt{dynamic\_cast}}
+Used for safe runtime downcasting. Returns \verb|nullptr| if the cast fails.
+
+\begin{verbatim}
+Animal* animal = new Dog();
+
+Dog* dog = dynamic_cast<Dog*>(animal);
+
+if (dog != nullptr)
+    dog->Bark();
+\end{verbatim}
+
+\newpage 
+
+\paragraph{3. \texttt{const\_cast}}
+Adds or removes the \verb|const| qualifier.
+
+\begin{verbatim}
+const int value = 10;
+
+int* ptr = const_cast<int*>(&value);
+\end{verbatim}
+
+\newpage 
+\paragraph{4. \texttt{reinterpret\_cast}}
+Reinterprets the bits of one pointer type as another.
+
+\begin{verbatim}
+int number = 65;
+
+char* ptr = reinterpret_cast<char*>(&number);
+
+cout << *ptr << endl;
+\end{verbatim}
+
+\begin{itemize}
+    \item \verb|static_cast| performs compile-time conversions between compatible types.
+
+    \item \verb|dynamic_cast| safely converts pointers or references within an inheritance hierarchy by checking the object's type at runtime.
+
+    \item \verb|const_cast| adds or removes \verb|const| or \verb|volatile| qualifiers.
+
+    \item \verb|reinterpret_cast| performs low-level reinterpretation of memory and should be used only when absolutely necessary.
+\end{itemize}
+
+\newpage
+
+\subsection{The C++ Casting Operators}
+\begin{itemize}
+	\item Casting issues are the consequence of long history of code being developed by many different people and is just a natural consequence of not knowing the cast of something by another developer (like in the malloc case).
+
+	\item But what is changed is again the \textbf{interpretation} of the data, which can be dangerous.
+
+	\item C++ supplies a \textbf{casting operator} specific to \textbf{inheritance-based} scenarios \\ 
+		(meaning \textbf{\underline{mainly useful for inheritance-based scenarios}}) that did not exist with C programming.
+
+	\item As seen, the \textbf{4 C++ casting operators} are:
+		\begin{enumerate}
+			\item \verb|static_cast|
+			\item \verb|dynamic_cast|
+			\item \verb|reinterpret_cast|
+			\item \verb|const_cast|
+		\end{enumerate}
+
+	\item The usage synatx of the \textbf{casting operators} is consistent:
+		\begin{verbatim}
+destination_type result = cast_operator<destination_type> (object_to_cast);
+		\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Using static\_cast}
+\begin{itemize}
+	\item \verb|static_cast| is a mechanism that can be used to \textbf{convert pointers} between related types, and perform \textbf{explicit type conversions} for standard data types that would otherwise happen automatiicaly or \textbf{implicitly}.
+
+	\item \verb|static_cast| implements a basic \textbf{\underline{compile-time check}} to ensure that the \textbf{pointer} is being \textbf{cast} to a \textbf{related type}.
+
+	\item C-style casting allows a \textbf{pointer} to \textbf{one object} to be casted to an absolutely \textbf{unrelated type} \underline{without complaint} by the compiler.
+
+		\pbreak
+
+	\item Using a \verb|static_cast|, a \textbf{pointer} can be \fbox{\textbf{upcasted}} to the \fbox{\textbf{base type}} or can be \fbox{\textbf{downcasted}} to the \fbox{\textbf{derived type}}:
+
+		\begin{verbatim}
+Base* objBase = new Derived();
+Derived* objDer = static_cast<Derived*>(objBase);	// ok!
+
+// class unrelated is not related to Base
+Unrelated* notRelated = static_cast<Unrelated*>(objBase);	// error
+// The cast is not permitted as types are unrelated
+		\end{verbatim}
+
+
+		\begin{itemize}
+    \item The following example demonstrates both an \textbf{upcast} and a \textbf{downcast}:
+
+\begin{verbatim}
+Derived* objDer = new Derived();
+
+Base* objBase = objDer;
+// upcast: Derived* -> Base*
+
+Derived* objDer2 = static_cast<Derived*>(objBase);
+// downcast: Base* -> Derived*
+\end{verbatim}
+
+    \item An \textbf{upcast} converts a derived class pointer into a base class pointer. This is safe because every derived object is also a base object.
+
+    \item A \textbf{downcast} converts a base class pointer into a derived class pointer. This is only safe if the object being pointed to is actually an instance of the derived class.
+
+    \item A \verb|static_cast| does not perform a runtime check during a downcast. If the object is not actually of the derived type, using the resulting pointer can cause undefined behavior. For safer runtime-checked downcasts, use \verb|dynamic_cast| with polymorphic base classes.
+\end{itemize}
+\end{itemize}
+
+\pbreak
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item Casting a \verb|Derived*| to a \verb|Base*| is called \textbf{\textit{upcasting}} and \underline{can be done} without any \textbf{explicit casting operator}:
+
+			\begin{verbatim}
+Derived objDerived;
+Base* objBase = &objDerived;	// ok!
+			\end{verbatim}
+
+		\item Casting a \verb|Base*| to a \verb|Derived*| is called \textbf{\textit{downcasting}} and \underline{cannot} be done without usage of \textbf{explicit casting operator}:
+
+	\begin{verbatim}
+Derived objDerived;
+Base* objBase = &objDerived;	// upcast -> ok!!!
+Derived* objDer = objBase;	// error: downcast needs explicit cast
+	\end{verbatim}
+
+
+	\end{itemize}
+\end{tcolorbox}
+
+\pbreak
+
+\begin{itemize}
+	\item However, note that \verb|static_cast| verifies only that the \textbf{pointer types} are \textbf{\underline{related}}.
+
+	It does \textbf{\underline{not}} perform any runtime checks.
+
+\item So, with \verb|static_cast|, a programmer could still get away with this bug:
+
+\begin{verbatim}
+Base* objBase = new Base();
+Derived* objDer = static_cast<Derived*>(objBase);	// still no errors!
+\end{verbatim}
+
+\item Here, \verb|objDer| actually \textbf{points} to a \textbf{\underline{partial Derived object}} because the \textbf{object} being \textbf{pointed to} is actually a \verb|Base()| type.
+
+\item Because \verb|static_cast| performs \textbf{only a compile-time check} of verifying that the types in question \textbf{are related} and \textbf{does not} perform a \textbf{runtime check}, a call to \verb|objDer->DerivedFunction()| would get compiled, but probably result in unexpected behavior during \textbf{runtime}.
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item Apart from helping in \textbf{upcasting} or \textbf{downcasting}, \verb|static_cast| can, in many cases, help make \textbf{implicit casts explicit} and bring them to the attention of the programmar or reader:
+
+	\begin{verbatim}
+double Pi = 3.14;
+int num = static_cast<int>(Pi);	// making an otherwise implicit cast, explicit
+	\end{verbatim}
+
+\item This makes things explicit to the reader, and lower the likelihood of reader error from implicit conversions.
+
+	\pbreak
+
+\item You would also need to use \verb|static_cast| when using \textbf{conversion operators} or \textbf{constructors} that have been declared using keyword \verb|explicit|.
+
+\item \textbf{Avoiding implicit conversions} via keyword \verb|explicit| was discussed in \textbf{Lesson 9} and \textbf{Lesson 12}.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Using dynamic\_cast and Runtime Type Identification}
+\begin{itemize}
+	\item \vocab{Dynamic\_casting} is the \textbf{opposite} of \textbf{static\_casting} and executes the \textbf{cast} at \underline{\textbf{runtime}}---that is, at \textbf{application execution time}.
+
+	\item The result of a \verb|dynamic_cast| \textbf{operation} can be checked to see whether the attempt at \textbf{casting succeeded}.
+
+	\item Here is typical usage:
+		\begin{verbatim}
+destination_type* Dest = dynamic_cast<class_type*>(Source);
+
+if (Dest)			// Check for success of the casting operation
+	Dest->CallFunc();
+		\end{verbatim}
+
+	\item For example:
+
+		\begin{verbatim}
+Base* objBase = new Derived();
+
+// perform a downcast
+Derived* objDer = dynamic_cast<Derived*>(objBase);
+
+if (objDer)	// check for success of the cast	
+	objDer->CallDerivedFunction();
+		\end{verbatim}
+
+	\item As shown, given a \textbf{pointer} to a \textbf{base-class object}, we can resort to a \verb|dynamic_cast| to \textbf{verify the type} of the \textbf{destination object} being \textbf{pointed to} before proceeding to use the pointer as such.
+
+\item Note that in the code snippet it is apparent that the \textbf{destination object} is a \verb|Derived| \textbf{type}.
+
+	So, the sample if of demonstrative value only.
+
+\item Yet, this is not always the case---when a \textbf{pointer} of \textbf{type} \verb|Derived*| is passed to a functino that accepts \textbf{type} \verb|Base*|.
+
+\item The function can use \verb|dynamic_cast| given a \textbf{base-class pointer type} to detected type and then perform operations specific to the types detected.
+
+\item Thus, \verb|dynamic_cast| helps determine the \textbf{type} at \textbf{\underline{runtime}} and use a \textbf{casted pointer} when it is safe to do so.
+
+\item Therefore, this mechanism of identifying the \textbf{type} of the \textbf{object} at \textbf{\underline{runtime}} is called \\ 
+	\vocab{runtime identification (RTTI)}.
+
+\item \fbox{\textbf{Listing 13.1} Using Dynamic Casting to Tell Whether a Fish Object is a Tuna or a Carp}
+
+\item Note: the \textbf{return value} of a \verb|dynamic_cast| \textbf{operation} should always be checked for \textbf{validity}.
+
+\item It is \textbf{NULL} when the \textbf{\underline{cast fails}}.
+
+\end{itemize}
+
+\newpage
+
+\subsubsection{Using reinterpret\_cast}
+\begin{itemize}
+	\item \verb|reinterpret_cast| is the \textbf{closest} a C++ \textbf{casting operator} gets to the C-style cast.
+
+	\item It forces a \textbf{reinterpretation of type} using syntax like below (similar to the \textbf{unrelated casting} option C):
+		\begin{verbatim}
+Base *objBase = new Base();
+Unrelated* notRelated = reinterpret_cast<Unrelated*>(objBase);
+// The code above compiles, but is not good programming!
+		\end{verbatim}
+
+	\item The \textbf{cast} actually \textbf{forces} the compiler to accept situations that \verb|static_cast| would normally not permit.
+
+	\item Sometimes used in cases like in drivers where data needs to be converted to a simple type than an API can accept---like some OS-level APIs require data to be sent as a \textbf{BYTE array}, that is, \verb|unsigned char*|):
+
+		\begin{verbatim}
+SomeClass* object = new SomeClass();
+// Need to send the object as a byte-stream...
+unsigned char* bytesFoAPI = reinterpret_cast<unsigned char*>(object);
+		\end{verbatim}
+
+	\item  The \textbf{cast} used in the preceding code has \textbf{\underline{not changed the binary representation}} of the \textbf{source object} and has effectively cheated the compiler into allowing the programmer to peek into \textbf{individual bytes} contained by an \textbf{object} of \textbf{type} \verb|SomeClass|.
+
+	\item B/c this comprises \textbf{type safetly}, \verb|reinterpret_cast| is a \textbf{last resort} in performing an otherwise unsafe (and nonportable) conversion.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Using \texttt{const\_cast}}
+\begin{itemize}
+    \item \vocab{const\_cast} enables you to add or remove the \verb|const| qualifier from an object or pointer.
+
+    \item It is primarily used when interfacing with legacy code or APIs that do not correctly use \verb|const| qualifiers.
+
+    \item Removing \verb|const| is only safe if the original object was \textbf{not} declared as \verb|const|. Modifying an object that was originally declared \verb|const| results in \textbf{undefined behavior}.
+
+    \item Example:
+\end{itemize}
+
+\begin{verbatim}
+void Print(char* str)
+{
+    cout << str << endl;
+}
+
+const char* message = "Hello";
+
+// Remove constness to call a legacy function
+Print(const_cast<char*>(message));
+\end{verbatim}
+
+\begin{itemize}
+    \item Since \verb|Print()| does not modify the string, this use of \verb|const_cast| is safe. However, if \verb|Print()| attempted to modify the string, the program would have undefined behavior.
+\end{itemize}
+
+\newpage
+
+\subsection{Problems with the C++ Casting Operators}
+\begin{itemize}
+	\item Not all C++ loves the casting operators given by C++: they can be cumbersome like example:
+
+	\begin{verbatim}
+double Pi = 3.14;
+
+// C++ style cast: static_cast
+int num = static_cast<int>(Pi);	// result: num is 3
+
+// C-style cast
+int num2 = (int)Pi;	// result: num is 3
+
+// leave casting to the compiler
+int num3 = Pi;	// result: num is 3
+	\end{verbatim}
+
+\item In all three cases, the programmer achieved the same result.
+
+\item In practice the second option is most prevalent, followed by the third.
+
+\item The first makes things difficult to read.
+
+\pbreak
+
+\item Another case is where C can handle its casting:
+
+\begin{verbatim}
+// using static_cast
+Derived* objDer = static_cast<Derived*>(objBase);
+
+// But, this works just as well...
+Dervied* objDerSimple = (Derived*)objBase;
+\end{verbatim}
+
+\item Thus, the adv of using \verb|static_cast| is overshadowed by its syntax handle.
+
+\item Etc for the others, except the \verb|dynamic_cast| is benefical for modern C++ applications.
+
+\item Best practice is to \textbf{avoid casting} as far as possible.
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item \textbf{DO} remember that casting a \verb|Dervied*| to a \verb|Base*| is called \vocab{upcasting} and this is \textbf{\underline{safe}}.
+	\item \textbf{DO} remember that casting a \verb|Base*| to a \verb|Dervied*| is called \vocab{downcasting} and this is \textbf{\underline{unsafe}} unless you use \verb|dynamic_cast| and \textbf{check for success}.
+	\item \textbf{DO} remember that the objective of creating an \textbf{inheritance hierarchy} is typically having \textbf{virtual functions} that when invoked using \textbf{base class pointers} ensure that the avilable \textbf{derived class} versions are invoked (like the \textbf{virtual destructor} most importantly).
+
+	\pbreak
+
+	\item \textbf{DON'T} forget to \textbf{check the pointer} for \textbf{validity} after using \verb|dynamic_cast|.
+	\item \textbf{DON'T} design your application around \fbox{\textbf{RTTI}} using \verb|dynamic_cast|.
+
+\end{itemize}
+
+\newbp
+
+\section{An Introduction to Macros and Templates}
+\subsection{The Preprocessor and the Compiler}
+\begin{itemize}
+	\item \textbf{Lesson 2} had introduced the \fbox{\textbf{preprocessor}}, which is what that runs \textbf{before} the compiler starts.
+
+	\item In other words, the \textbf{preprocessor} actually decides what is compiled on the basis of how you instruct it.
+
+	\item \textbf{Preprocessor directives} all start with the \verb|#| sign:
+
+		\begin{verbatim}
+// instruct preprocessor to insert contents of iostream here
+#include <iostream>
+
+// define a macro constant
+#define ARRAY_LENGTH 25
+int numbers[ARRAY_LENGTH];	// array of 25 integers
+
+// define a macro function
+#define SQUARE(x) ((x) * (x))
+int TwentyFive = SQUARE(5);
+		\end{verbatim}
+
+	\item The lesson focuses on \textbf{two types} of \textbf{preprocessor directives}:
+		\begin{itemize}
+			\item one using \verb|#define| to define a \textbf{constant}
+			\item another using \verb|#define| a \textbf{macro function}
+		\end{itemize}
+
+	\item Both these \textbf{directives} tell the \textbf{preprocessor} to replace every instance of the \textbf{macro} (ARRAY\_LENGTH or SQUARE) with the value they define (aka text substitute)
+\end{itemize}
+
+\newpage
+
+\subsection{Using Macro \#define to Define Constants}
+\begin{itemize}
+	\item The syntax of using \#define to compose a \textbf{constant} is simple:
+		\begin{verbatim}
+#define indentifier value
+	
+// Example:
+#define ARRAY_LENGTH 25
+		\end{verbatim}
+
+	\item So after the \textbf{preprocessor} runs we can see text substitutes like
+	\begin{verbatim}
+int numbers [ARRAY_LENGTH] = {0}; 
+
+// gets converted to
+
+int numbers [25] = {0}; 
+	\end{verbatim}
+
+\item I am not going over code for this trivial thing, but note that the \textbf{preprocessor} \underline{does not always check} for \textbf{correctness} of the substitution (but the compiler always does).
+
+\end{itemize}
+
+\newpage
+
+\subsubsection{Using Macros to Protection against Multiple Inclusion}
+\begin{itemize}
+	\item C/C++ programmers typically \underline{\textbf{declare}} their classes and functions in \vocab{.h} filess called \vocab{header files}.
+
+	\item The respective functions are \underline{\textbf{defined}} in \vocab{.cpp files} called \vocab{source files}, and they typically include the \textbf{header files} using the \verb|#include <header>| \textbf{preprocessor directive}.
+
+	\item A tricky part for any \textbf{circular dependency} of \textbf{header files} would entail \verb|forward declarations| (it's best to not have circular dependency):
+
+	\item A.h
+	\begin{verbatim}
+#ifndef A_H
+#define A_H
+
+class B;  // Forward declaration
+
+class A {
+public:
+    B* b;   // OK: pointer or reference
+};
+
+#endif
+	\end{verbatim}
+
+\item B.h
+	\begin{verbatim}
+#ifndef B_H
+#define B_H
+
+class A;  // Forward declaration
+
+class B {
+public:
+    A* a;
+};
+
+#endif
+	\end{verbatim}
+
+\item A.cpp
+
+	\begin{verbatim}
+#include "A.h"
+#include "B.h"
+	\end{verbatim}
+
+\item B.cpp
+
+	\begin{verbatim}
+#include "B.h"
+#include "A.h"
+	\end{verbatim}
+\end{itemize}
+
+
+\newpage
+
+\begin{itemize}
+	\item So with many header files potentially including many others and having \textbf{multiple inclusions} (and not necessarily as the circular dependency case, but more and very likely in general), we use \textbf{macros} in conjunction with \textbf{preprocessor directives} \verb|#ifndef| and  \verb|#endif|
+
+	\item header1.h that includes \verb|<header2.>| looks like the following:
+		\begin{verbatim}
+#ifndef HEADER1_H_		// multiple inclusion guard
+#define HEADER1_H_		// preprocessor will read this and following lines once
+#include <header2.h>
+
+class Class1 
+{
+	// class members
+};
+#endif	// end of header1.h
+		\end{verbatim}
+
+	\item header2.h looks similar, but is flipped:
+		\begin{verbatim}
+#ifndef HEADER2_H_		// multiple inclusion guard
+#define HEADER2_H_		// preprocessor will read this and following lines once
+#include <header1.h>
+
+class Class2 
+{
+	// class members
+};
+#endif	// end of header2.h
+		\end{verbatim}
+
+	\item the \verb|#ifndef| is read as "if-not-defined" and is a \textbf{preprocessing conditional command}, instructing the \textbf{preprocessor} to continue only if the identifier \textbf{has not been defined}.
+
+	\item \verb|#endif| marks the \textbf{end} of this \textbf{conditional processing instruction} for the \textbf{preprocessor}.
+
+\item It prevents the header file from being processed more than once during a single compilation, avoiding duplicate declarations/definitions and helping prevent errors caused by multiple inclusion.
+
+\item This mechanism is simply the \underline{\textbf{one of the most frequently used macro-based functionalities}} in the world of C and C++ programming.
+
+\end{itemize}
+
+\newpage
+
+\subsection{Using \#define to Write Macro Functions}
+\begin{itemize}
+	\item The capability of the \textbf{preprocessor} to simply replace text elements identified by a \textbf{macro} often results it in being used to write \textbf{simple functions}, for example:
+
+		\begin{verbatim}
+#define SQUARE(x) ((x) * (x))
+
+// or 
+
+#define PI 3.1416
+#define AREA_CIRCLE(r) (PI*(r)*(r))
+		\end{verbatim}
+
+	\item \textbf{Macro functions} are expanded \textbf{\underline{inline}} before compilations and hence can help improve code performance in certain cases.
+
+\item \fbox{\textbf{Listing 14.2} Using Macro Functions}
+\end{itemize}
+
+\newpage
+\subsubsection{Why All the Parentheses?}
+
+\begin{itemize}
+    \item For example:
+\begin{verbatim}
+#define AREA_CIRCLE(r) (PI*(r)*(r))
+\end{verbatim}
+
+    \item The reason for the many parentheses is that a \textbf{macro} is expanded by the \textbf{preprocessor} using simple \textbf{text substitution}; it does not understand operator precedence.
+
+    \item For example, if we call
+\begin{verbatim}
+AREA_CIRCLE(a + b)
+\end{verbatim}
+    then the expansion becomes
+\begin{verbatim}
+(PI*(a + b)*(a + b))
+\end{verbatim}
+    which correctly computes $\pi(a+b)^2$.
+
+    \item Without the parentheses,
+\begin{verbatim}
+#define AREA_CIRCLE(r) PI*r*r
+\end{verbatim}
+    the same call expands to
+\begin{verbatim}
+PI*a + b*a + b
+\end{verbatim}
+    which is interpreted according to operator precedence and produces a completely different result.
+
+	\pbreak
+
+\item These brackets automatiicaly result in the calculation of an accurate area, making your \textbf{macro code} independent of \textbf{operator precedence} and the effects thereof.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Using Macro 'assert' to Validate Expressions}
+\begin{itemize}
+	\item The \vocab{assert} \textbf{macro} enables you to \textbf{check that a condition is true at runtime}; if the condition evaluates to \verb|false|, the program is terminated and a diagnostic message indicating the failed assertion is displayed.
+
+	\item In large applications this is a decent way to test functionality.
+
+	\item To use \verb|assert| you include \verb|<assert.h>| and the syntax is as follows:
+		\begin{verbatim}
+assert (expression that evaluations to true or false);
+		\end{verbatim}
+
+	\item A sample use of \verb|assert()| that validates the contents of a \textbf{pointer} is:
+		\begin{verbatim}
+#include <assert.h>
+int main()
+{
+	char* sayHello = new char[25];
+	assert(sayHello != NULL);	// throws a message if pointer is NULL;
+
+	// other code
+
+	delete[] sayHello;
+	return 0;
+}
+		\end{verbatim}
+
+	\item \verb|assert()| ensures that you are notified if the \textbf{pointer} is \textbf{invalid}.
+
+	\item This makes it a handy debugging feature to say check for validty of the parameters as well.
+
+	\item This is \underline{\textbf{highly recommended}} and helps you improve the quality of your code over the long term.
+\end{itemize}
+
+\pbreak
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item \verb|assert()| is typically \textbf{disabled} in \vocab{release modes} and provides you with an \textbf{error message} or information only in the \vocab{debug build} of most development environments.
+
+		\item Additionally, some environments have implemented this as a \textbf{function}, \underline{not} as a \textbf{macro}.
+	\end{itemize}
+\end{tcolorbox}
+
+\pbreak
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item An \textbf{assert} does \underline{not} make it to the \textbf{release build}, it is important to ensure that checks are critical to the functioning fo your application (for ex, the \textbf{return value} of a \verb|dynamic_cast| operation) are still performed using an \textbf{if-statement}.
+
+		\item an \textbf{assert} assits you in problem detection; it's \underline{not} something to \textbf{replace pointer checks} in the code.
+	\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\subsubsection{Adv and Disadv of Using Macro Functions}
+\begin{itemize}
+    \item \textbf{Advantages}
+    \begin{itemize}
+        \item \textbf{Eliminates function call overhead.} A macro is expanded by the \textbf{preprocessor} before compilation, so the generated code is inserted directly at each point of use rather than invoking a function at runtime.
+
+        \item \textbf{May improve performance for small operations.} Since there is no function call, stack frame creation, or parameter passing, macro expansion can be more efficient for very simple operations.
+
+        \item \textbf{Can operate on different data types.} Because a macro performs only \textbf{text substitution}, it is not restricted to a particular type (although this also introduces disadvantages).
+
+        \item \textbf{Useful for compile-time constants and conditional compilation.} Macros are commonly used to define symbolic constants, enable or disable debugging code, and control platform-specific compilation using preprocessing directives.
+
+        \item \textbf{Reduces repetitive code.} Frequently used expressions can be written once and reused throughout a program, improving consistency and maintainability when used appropriately.
+    \end{itemize}
+
+    \item \textbf{Disadvantages}
+    \begin{itemize}
+        \item \textbf{No type checking.} The \textbf{preprocessor} simply performs text substitution and has no knowledge of C/C++ types, allowing type-related errors to pass unnoticed until compilation or execution.
+
+        \item \textbf{Arguments may be evaluated multiple times.} A macro parameter appearing more than once in the macro body causes the corresponding argument to be substituted multiple times, potentially producing unintended side effects.
+        \begin{verbatim}
+#define SQUARE(x) ((x) * (x))
+
+SQUARE(i++)   // expands to ((i++) * (i++))
+        \end{verbatim}
+
+        \item \textbf{Operator precedence can produce incorrect results.} Since macro expansion is purely textual, failing to surround parameters and the entire expression with parentheses may lead to unexpected evaluations.
+        \begin{verbatim}
+#define SQUARE(x) x*x
+
+SQUARE(a + b)   // expands to a + b * a + b
+        \end{verbatim}
+
+        \item \textbf{More difficult to debug.} The compiler only sees the expanded code rather than the original macro invocation, making compiler errors and debugger output harder to interpret.
+
+        \item \textbf{Code size may increase.} Every macro invocation expands into a copy of its replacement text, potentially increasing the size of the generated executable.
+
+        \item \textbf{Lack of scope.} Unlike variables and functions, macros are processed before compilation and are not governed by C++ namespaces or normal scope rules, increasing the risk of name collisions.
+
+        \item \textbf{Modern alternatives are usually preferable.} In modern C++, \textbf{inline functions}, \textbf{constexpr}, templates, and `const` variables provide similar performance while offering type safety, proper scoping, and better debugging support.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection*{Do's and Don't's}
+\begin{tcolorbox}
+\begin{itemize}
+	\item \textbf{DO} program your own \textbf{macro functions} as \underline{infrequently} as possible.
+	\item \textbf{DO} use \verb|const| variables where you can \underline{instead of} \textbf{macros}
+	\item \textbf{DO} remember that \textbf{macros} are \underline{not type safe} and the \textbf{preprocessor} performs \textbf{no type checking}.
+
+	\pbreak
+
+\item \textbf{DON'T} forget to envelop every variable in a \textbf{macro function definition} with brackets
+\item \textbf{DON'T} forget to insert multiple \textbf{inclusion guards} using \verb|#ifndef|, \verb|#define|, and \verb|#endif| in your \textbf{header files}.
+\item \textbf{DON'T} forget to sprinkle your code with \textbf{generous} number of \verb|assert()| statements---these don't make it to the \vocab{release version} are are good at improving \textbf{quality} of your code.
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\subsection{An Introduction to Templates}
+\begin{itemize}
+	\item You begin the \textbf{declaration} of a \vocab{template} using the keyword \verb|template| followed by a \textbf{type parameter list}:
+
+		\begin{verbatim}
+template <parameter list>
+template function / class declaration...
+		\end{verbatim}
+
+	\item The keyword \verb|template| marks the \textbf{start} of a \textbf{template declaration} and is followed by the \textbf{template parameter list}.
+
+	\item This \textbf{parameter list} contains the keyword \vocab{typename} that \textbf{defines} the \textbf{template parameter} \verb|objType|, making it a \underline{\textbf{placeholder}} for the \underline{\textbf{type}} of the \textbf{object} that the \textbf{template} is being instantiated for.
+
+		\begin{verbatim}
+// a template function
+template <typename T1, typename T2 = T1>
+bool TemplateFunction(const T1& param1, const T2& param2);
+
+// a template class
+template <typename T1, typename T2 = T1>
+class MyTemplate 
+{
+private:
+	T1 member1;
+	T2 member2;
+
+public:
+	T1 GetObj1() { return member1; }
+	// ... other members
+};
+		\end{verbatim}
+
+	\item What you see is a \vocab{template function} and a \vocab{template class}, each taking \textbf{two template parameters} \verb|T1| and \verb|T2|, where \verb|T2| has been given the \textbf{default type} as that of \verb|T1|.
+\end{itemize}
+
+\newpage
+
+\subsubsection{The Different Types of Template Declarations}
+\begin{itemize}
+	\item A \textbf{\fbox{template declaration}} can be 
+		\begin{itemize}
+			\item a declaration of defintion of a function
+			\item a declaration of defintion of a class
+			\item a definition of a member function or a member class of a class template
+			\item a definition of a statid data member of a class template
+			\item a definition of a static data member of a class nested within a class template
+			\item a definition of a member template of a class or class template
+		\end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Template Functions}
+\begin{itemize}
+\item Imagine a \textbf{function} that would adapt itself to suit parameters of \textbf{different types}.
+\item Such a function is possible using \textbf{templates}.
+
+\item Let's look at a sample \textbf{template declaration} that returns the greater of two supplied parameters:
+
+	\begin{verbatim}
+template <typename objType>
+const objType& GetMax(const objType& value1, const objType& value2)
+{
+	if (value1 > value2)
+		return value1;
+	else
+		return value2;
+}
+
+// usage:
+
+int num1 = 25;
+int num2 = 40;
+
+int maxVal = GetMax<int>(num1, num2);
+
+double double1 = 1.1;
+double double2 = 1.001;
+double maxVal = GetMax<double>(double1, double2);
+	\end{verbatim}
+
+\item Note the \verb|<int>| and \verb|<double>|.
+\item It effectively \textbf{defines} the \textbf{template parameter} \verb|objType| as \verb|int| or \verb|double| respectively.
+
+\item The proceding code leads to the compiler generating two versions of the \textbf{template function} \verb|GetMax|, which can be visualized as the following:
+
+\begin{verbatim}
+const int& GetMax(const int& value1, const int& value2)
+{
+	// ...
+}
+
+const double& GetMax(const double& value1, const double& value2)
+{
+	// ...
+}
+\end{verbatim}
+
+\item In reality, however, \textbf{template functions} \underline{don't} necessarily need an \textbf{accompanying type specifier}. So the following function call works perfectly well:
+
+	\begin{verbatim}
+int maxVal = GetMax(num1, num2);
+	\end{verbatim}
+
+\item Compilers are intelligent enough to understand that the \textbf{template function} is being invoked for the \textbf{integer type} in this case.
+
+\item With \textbf{template classes}, \underline{however}, you need to \underline{\textbf{explicitly specify type}}, as shown in \fbox{\textbf{Listing 14.3}}
+\end{itemize}
+
+\newpage
+
+\subsection{Templates and Type Safety}
+\begin{itemize}
+	\item \textbf{Template functions} \verb|DisplayComparison()| and \verb|GetMax()| shown in \textbf{Listing 14.3} are \underline{\textbf{type safe}}.
+
+	\item This means that they would \underline{not} allow a meaningless call like this one:
+		\begin{verbatim}
+DisplayComparison(num1, name1);
+		\end{verbatim}
+
+	\item This would immediately result in a \textbf{compile failure} (int and a string)
+\end{itemize}
+
+\newpage 
+
+\subsubsection{Template Classes}
+\begin{itemize}
+	\item Recall: \textbf{classes} are design blueprints, and the real-world respresentation of a \textbf{class} is an \textbf{object}.
+
+	\item \textbf{Template classes} are the \textbf{templatized versions} of C++ classes. They are blueprints of blueprints.
+
+	\item When using a \textbf{template class}, you are given the option to specify the \textbf{"type"} you are specializing the \textbf{class} for.
+
+	\item This enables you to create some humans with \textbf{template parameters} \verb|Age| as a \verb|long long|, some with \verb|int|, and some wiht \verb|Age| as an integer of type \verb|short|.
+
+		\pbreak
+
+	\item A simple \textbf{template class} that uses a \textbf{single parameter} \verb|T| to hold a \textbf{member variable} can be written as the following:
+		\begin{verbatim}
+template <typename T>
+class HoldVarTypeT
+{
+private:
+	T value;
+
+public:
+	void SetValue (const T& newValue) { value = newValue; }
+	T& GetValue() { return value; }
+};
+		\end{verbatim}
+
+	\item The \textbf{type} of the \textbf{variable} is \verb|T|, and that is assigned at the time the \textbf{template} is used, that is, \vocab{instantiated}.
+
+		\pbreak
+
+	\item So, let's look at a sample usage of this \textbf{template class}:
+		\begin{verbatim}
+HoldVarTypeT <char> holdInt;	// template instantiation for int
+holdInt.SetValue(5);
+cout << "The value stored is: " << holdInt.GetValue() << endl;
+		\end{verbatim}
+
+	\item You have used thnis \textbf{template class} to hold an retrieve an \textbf{object} of \textbf{type} \verb|int|; that is, the \verb|Template| class is \textbf{instantiated} for a \textbf{template parameter} of \textbf{type} \verb|int|.
+
+	\pbreak
+
+\item You can do this for other types like for \textbf{character strings}:
+	\begin{verbatim}
+HoldVarTypeT <char*> holdStr;
+holdStr.SetValue("Sample string");
+cout << "The value stored is: " << holdStr.GetValue() << endl;
+	\end{verbatim}
+
+\item Thus, the \textbf{template class} defines a pattern for classes and helps implement that pattern on \textbf{different data types} that the \textbf{template} may be \textbf{instantiated} with.
+
+\end{itemize}
+
+\pbreak
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item \textbf{\fbox{Template classes}} can be \textbf{instanstatied} with types other than simple ones like \verb|int| or classes supplied by the standard library.
+
+		\item You may \textbf{instantiate} a \textbf{template} using a \textbf{class} defined by you..
+
+		\item For example:
+
+			\begin{verbatim}
+HoldVarTypeT<Human> holdHuman;
+holdHuman.SetValue(firstMan);
+holdHuman.GetValue().IntroduceSelf();
+			\end{verbatim}
+
+			\item For \textbf{class templates}, the template arguments must generally be specified inside \verb|<>| when creating an object, such as \verb|HoldVarTypeT<Human> holdHuman;|, because the compiler needs to know what type should replace the template parameter.
+
+				However, since \textbf{C++17}, \textbf{Class Template Argument Deduction (CTAD)} allows the compiler to infer the template arguments from constructor arguments in some cases, allowing the \verb|<>| to be omitted.
+	\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\subsubsection{Declaring Templates with Mutliple Parameters}
+\begin{itemize}
+	\item The \vocab{template parameter list} cna be expanded to \textbf{declare multiple parameters} separated by a comma.
+
+	\item So yuo can declare a generic class that holds a pair of \textbf{objects} that can be of \textbf{differing types}:
+
+		\begin{verbatim}
+template <typename T1, typename T2>
+class HoldsPair
+{
+private:
+	T1 value1;
+	T2 value2;
+
+public:
+	// constructor that initializes member variables
+	HoldsPair(const T1& val1, const T& val2)
+	{
+		value1 = val1;
+		value2 = val2;
+	}
+
+	// ... other member functions
+};
+		\end{verbatim}
+
+	\item In this example, \verb|class HoldsPair| accepts \textbf{two template parameters} named \verb|T1| and \verb|T2|.
+
+	\pbreak
+
+	\item We can use this class to hold \textbf{two objects} of the \textbf{same type} or od \textbf{different types} as you can see here:
+
+		\begin{verbatim}
+// a template instantiation that pairs an int with a double
+HoldsPair<int, double> pairIntDouble (6, 1.99);
+
+// a template instantiation that pairs an int with an int
+HoldsPair<int, int> pairIntInt (6, 500);
+		\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Declaring Templates with Default Parameters}
+\begin{itemize}
+	\item We can modify the previous version of \verb|HoldsPair <...>| to declare \verb|int| as the \\
+		\vocab{default template parameter type}:
+
+\begin{verbatim}
+template <typename T1=int, typename T2=int>
+class HoldsPair 
+{ 
+	// ... method declarations	
+};
+\end{verbatim}
+
+\item This is simlilar in \textbf{construction} to \textbf{functions} that \textbf{define default input parameter values} except for the fact that, in this case, we define \textbf{default \textit{types}}.
+
+\item The second usage of \verb|HoldsPair| can thus be compacted to:
+	\begin{verbatim}
+// pair an int with an int (default type)
+HoldsPair<> pairsInts(6, 500);
+	\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Sample Template 'class$<>$' HoldsPair}
+\begin{itemize}
+	\item \fbox{\textbf{Listing 14.4} A Template Class with a Pair of Member Attributes}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Template Instantiation and Specilization}
+\begin{itemize}
+	\item A \textbf{template class} is a \textbf{blueprint} of a \textbf{class} (a blueprint of a blueprint), and therefore doesn't truly exist for the compiler before it has been used in one form or another.
+
+	\item That is, as far as the compiler is concerned, a \textbf{template class} you \textbf{define} but don't consume in code that is simply \underline{ignored}.
+
+	\item However, \underline{\textit{once you instantiate}} a \textbf{template class}, like \verb|HoldsPair|, by \textbf{supplying template arguments} like this:
+		\begin{verbatim}
+HoldsPair<int, double> pairIntDbl;
+		\end{verbatim}
+
+	\item You are instructing the compiler to create a \textbf{class} for you using the \textbf{template} and \textbf{instantiate} it for the \textbf{types specified} as \textbf{template arguments} (\verb|int| and \verb|double| in this case).
+
+	\item Thus, in the case of \textbf{templates}, \vocab{instantiation} is the act of process of creating a \textbf{specific type} using one ore more \textbf{template arguments}.
+
+		\pbreak
+
+	\item On the other hand, there may be situations that require you to \textbf{explicitly define} a (different) \textbf{behavior} of a \textbf{template} when \textbf{instantiated} with a \textbf{specific type}.
+
+	\item This is where you \vocab{specialize a template} (or \textbf{behavior thereof}) \underline{for that \textbf{type}}.
+
+	\item A \vocab{specilization} of a \textbf{template class} \verb|HoldsPair| \underline{when \textbf{instantiated}} with \textbf{template parameters} both of type \verb|int| would look like this:
+
+		\begin{verbatim}
+template<> class HoldsPair<int, int>
+{
+	// implementation code here
+}
+		\end{verbatim}
+
+	\item Needless to say, code that \textbf{specializes} a \textbf{template} must follow the \textbf{template definition}.
+
+	\item \fbox{\textbf{Listing 14.5} Demonstrates Template Specialization}
+
+
+		\begin{itemize}
+    \item \textbf{Template specialization} allows you to provide a custom implementation of a class template for a specific combination of types. In this example, \verb|HoldsPair<int, int>| has a specialized version that behaves differently from the general template.
+
+	\item \boxednote{
+
+			Specialization is \textbf{useful} when a \textbf{particular type combination} requires \\ 
+		\textbf{\underline{different behavior, optimizations, or additional functionality}} that\\ 
+		\underline{\textbf{does not apply to all possible template types}}.
+	}
+
+    \item The general template \verb|HoldsPair<T1, T2>| provides a reusable implementation for any pair of types, while the specialized version \verb|HoldsPair<int, int>| allows the programmer to override that behavior for integers.
+
+    \item Template specialization avoids duplicating an entire class for every type combination while still allowing precise control when a specific case needs custom handling.
+
+    \item In this example, the specialized \verb|GetFirstValue()| function prints a message before returning the integer value, demonstrating how specialization can modify the behavior of individual template instances.
+\end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Template Classes and 'static' Members}
+\begin{itemize}
+	\item We learned how code in \textbf{templates} \textit{begins to exist} for the \textbf{compiler} \underline{when used} and \underline{not otherwise}.
+
+	\item So, how would \verb|static| \textbf{member attributes} functions within a \textbf{template class}?
+
+	\item In \textbf{lesson 9}, we've learned that \textbf{declaring} a \textbf{class member} \verb|static| results in the \underline{\textbf{member being shared}} across \textbf{all instances} of a \textbf{class}.
+
+		\pbreak
+
+\item It's similar with a \textbf{template class} too, save for the fact that a \textbf{static member} is \underline{\textbf{shared across all objects}} of a \textbf{template class} with the \textbf{\underline{same template instantiation}}.
+
+\item So, a \verb|static| member \verb|X| within a \textbf{template class} is \underline{static} within \textbf{all instances} of the \textbf{class instantiated} \underline{for} \verb|int|.
+
+\item Similarly, \verb|X| is also static within all instances of the class \textbf{specialized} for \verb|double|, \underline{\textbf{independent}} of the other \textbf{template instantiation} for \verb|int|.
+
+	\pbreak
+
+\item In other words, you can visualize it as the compiler creating \textbf{two versions} of the \textbf{static member variable} in a \textbf{template class}: 
+	\begin{itemize}
+\item \verb|X_int| for \textbf{template instantiation} as \verb|int| and
+\item for \textbf{template instantiations} as \verb|double|
+	\end{itemize}
+
+	\pbreak
+
+	\begin{itemize}
+    \item A \textbf{template class} does not generate actual code for the compiler until a specific type is used. The compiler creates a separate class definition for each \textbf{template instantiation}.
+
+    \item This means that a \verb|static| member in a template class is not shared across all possible template types; instead, it is shared only among objects that use the \textbf{same template instantiation}.
+
+    \item For example, \verb|MyClass<int>| and \verb|MyClass<double>| are treated as two separate classes by the compiler. Therefore, each one receives its own independent copy of the static member variable.
+
+    \item If a template class contains a static member \verb|X|, then all objects of \verb|MyClass<int>| share the same \verb|X_int|, while all objects of \verb|MyClass<double>| share a separate \verb|X_double|.
+
+    \item Conceptually, the compiler creates separate versions of the static member for each type:
+    \begin{itemize}
+        \item \verb|X_int| for the \verb|int| template instantiation.
+        \item \verb|X_double| for the \verb|double| template instantiation.
+    \end{itemize}
+
+    \item Thus, static members in templates are \textbf{shared within each template instantiation}, but are \textbf{independent between different template instantiations}.
+\end{itemize}
+
+\item \fbox{\textbf{Listing 14.6} The Effect of Static Variables on Template Class and Instances Thereof}
+
+\end{itemize}
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item \textbf{Static member instantation} syntax for a \textbf{template class} is \textbf{not to be missed} here:
+		\begin{verbatim}
+// static member initialization
+template<typename T> int TestStatic<T>::staticVal;
+		\end{verbatim}
+
+	\item This follows the pattern:
+
+		\begin{verbatim}
+template<template parameters> StaticType
+ClassName<Template Arguments>::StaticVarName;
+		\end{verbatim}
+	\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\begin{verbatim}
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class TestStatic 
+{
+public:
+	static int staticVal;
+};
+
+// static member initialization
+template<typename T> int TestStatic<T>::staticVal;
+\end{verbatim}
+
+\begin{itemize}
+    \item The class \verb|TestStatic| is a \textbf{class template}, meaning the compiler creates a separate version of the class for each type used as the template argument.
+
+    \item The declaration:
+\begin{verbatim}
+static int staticVal;
+\end{verbatim}
+    declares a \textbf{static member variable} that is shared among all objects of the same template instantiation.
+
+    \item For example, all objects of \verb|TestStatic<int>| share one copy of \verb|staticVal|, while all objects of \verb|TestStatic<double>| share a separate copy. The static variables are independent because \verb|TestStatic<int>| and \verb|TestStatic<double>| are different classes created by the compiler.
+
+    \item The definition:
+\begin{verbatim}
+template<typename T> int TestStatic<T>::staticVal;
+\end{verbatim}
+    is required because the declaration inside the class only tells the compiler that the static member exists. This line actually allocates storage for the static member for each template instantiation.
+
+    \item The compiler conceptually creates separate static variables for each type:
+    \begin{itemize}
+        \item \verb|TestStatic<int>::staticVal| for the \verb|int| instantiation.
+        \item \verb|TestStatic<double>::staticVal| for the \verb|double| instantiation.
+    \end{itemize}
+
+    \item Therefore, a static member inside a template class is \textbf{shared among objects of the same instantiated type}, but it is \textbf{separate between different template instantiations}.
+
+		\pbreak
+
+	\item It's very similar to normal static declaration:
+		\begin{verbatim}
+class Test
+{
+public:
+    static int staticVal;
+};
+
+// definition of static member
+int Test::staticVal;
+		\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsubsection{Variable Templates, Also Called Variadic Templates}
+\begin{itemize}
+	\item Let's assume you want to write a \textbf{generic function} that adds two values.
+
+	\textbf{Template function} \verb|Sum()| achieves just that:
+	\begin{verbatim}
+template <typename T1, typename T2, typename T3>
+void Sum(T1& res, T2 num1, T3 num2)
+{
+	res = num1 + num2;
+	return;
+}
+	\end{verbatim}
+
+\item This is simple, however, if you were required to write \textbf{one single function} that would be capable of \textbf{adding any number of values}, each passed an \textbf{argument}, you would need to make use of \vocab{variable templates} in defining such a function.
+
+\item \textbf{Variable templates} or \textbf{variadic templates} have been part of C++ since C++14.
+
+\item \fbox{\textbf{Listing 14.7} Function Using Variadic Templates Demonstrates Variable Arguments}
+
+\end{itemize}
+
+\pbreak
+
+	\begin{tcolorbox}
+		\begin{itemize}
+			\item Note the \textbf{ellipis mark ...}
+			\item \textbf{Ellipis} in C++ used with \textbf{templates} tell the compiler that the \textbf{template class} or \textbf{function} may accept an \underline{\textbf{arbitrary number of template arguments}} of \underline{any type}.
+		\end{itemize}
+	\end{tcolorbox}
+
+	\pbreak
+
+	\begin{itemize}
+		\item \textbf{Variable templates} are powerful addition to C++.
+		\item Programmers using \textbf{variable templates} save themselves the repetitive effot of implementing functions that perform a task in various \textbf{overloaded versions}, creating code that is shorter and simpler to maintain.
+	\end{itemize}
+
+	\pbreak
+	\begin{tcolorbox}
+		\begin{itemize}
+			\item Note: C++14 supplies you with an \textbf{operator} that would tell the \textbf{number of template arguments} passed in a call to a \textbf{variable templated}.
+
+			\item In \textbf{Listing 14.7}, you could use this \textbf{operator} inside a function like \verb|Sum()|, like this:
+
+				\begin{verbatim}
+int arrNums[sizeof...(Rest)];
+// length of array evaluated using sizeof...() at compile time
+				\end{verbatim}
+
+			\item You \underline{must not confuse} \verb|sizeof...()| with \verb|sizeof(Type)|.
+
+			\item The \textbf{latter} returns the \textbf{size} of a \textbf{type}; the \textbf{former} returns the \textbf{number of template arguments} sent to a \textbf{variadic template}.
+		\end{itemize}
+	\end{tcolorbox}
+
+	\newpage
+
+	\begin{itemize}
+		\item The support of \textbf{variable templates} has ushered in standard support of \vocab{tuples}: \verb|std::tuple|
+		\item \verb|std::tuple| is the \textbf{class template} that implements the tuple and it may be \textbf{instantiated} with a \underline{\textbf{varying number of member elements and types}} thereof.
+
+		\item These may be \textbf{individually accessed} using standard library function \verb|std::get|
+
+		\item \fbox{\textbf{Listing 14.8} Instantiating and Using a 'std::tuple'}
+	\end{itemize}
+
+	\newpage
+
+\newpage
+
+\subsubsection{Using 'static\_assert' to Perform Compile-Time Checks}
+\begin{itemize}
+    \item The \verb|static_assert| keyword allows you to perform \textbf{compile-time checks} by verifying that a condition is true while the program is being compiled.
+
+    \item Unlike the \verb|assert| macro, which checks conditions at \textbf{runtime}, \verb|static_assert| checks conditions before the program is executed. If the condition evaluates to \verb|false|, compilation fails and an error message is displayed.
+
+    \item \verb|static_assert| is useful for catching programming errors early, enforcing requirements, and ensuring that assumptions about types, sizes, or values remain valid.
+
+    \item The syntax is:
+\begin{verbatim}
+static_assert(condition, "error message");
+\end{verbatim}
+
+    \item The condition must be a \textbf{constant expression} that the compiler can evaluate during compilation.
+
+    \item For example:
+\begin{verbatim}
+#include <iostream>
+
+template <typename T>
+class Array
+{
+private:
+    T data[10];
+
+public:
+    Array()
+    {
+        static_assert(sizeof(T) <= 4,
+                      "Type is too large for this array");
+    }
+};
+
+int main()
+{
+    Array<int> intArray;       // Compiles successfully
+
+    // Array<double> doubleArray;
+    // Compilation error if sizeof(double) > 4
+
+    return 0;
+}
+\end{verbatim}
+
+    \item In this example, \verb|static_assert| ensures that the template type satisfies a requirement before generating the class. If a type violates the condition, the compiler stops and reports the provided error message.
+
+    \item \verb|static_assert| is especially useful with \textbf{templates}, because templates can accept many different types, and compile-time checks can prevent invalid template instantiations from being created.
+
+		\pbreak
+
+\item \fbox{\textbf{Listing 14.9} static\_assert}
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item \textbf{DO} use \textbf{templates} for implementation of \textbf{generic concepts}.
+	\item \textbf{DO} choose \textbf{templates} over \textbf{macros}.
+		\pbreak
+
+	\item \textbf{DON'T} forget to use the principles of \verb|const| correctness when programming \textbf{template functions} and \textbf{classes}.
+	\item \textbf{DON'T} forget that a \textbf{static member} contained within a \textbf{template class} is \textbf{static} for \underline{every type-specilization} of the \textbf{class}.
+\end{itemize}
 
 \end{document}
 
