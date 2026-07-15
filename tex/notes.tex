@@ -10980,5 +10980,289 @@ int main()
 	\item \textbf{DON'T} forget that a \textbf{static member} contained within a \textbf{template class} is \textbf{static} for \underline{every type-specilization} of the \textbf{class}.
 \end{itemize}
 
+\newbp
+
+\section{Lambda Expressions}
+\begin{itemize}
+	\item \textbf{Lambda expressions} are a compact way to \textbf{define} and \textbf{construct} function objects \underline{without a name}.
+
+	\item Introduced in C++11.
+\end{itemize}
+
+\pbreak
+
+\subsection{What is a Lambda Expression?}
+\begin{itemize}
+	\item A \vocab{lambda expression} can be visualized as a \textbf{compact} version of an \textbf{unnamed} \verb|struct| (or \verb|class|) with a \textbf{public} \verb|operator()|.
+
+	\item In that sense, a \textbf{lambda expressions} is a \textbf{function object}.
+
+	\item Let's look into what is a \vocab{function object}:
+
+		\begin{verbatim}
+// struct that behaves as a unary function
+template <typename elementType>
+struct DisplayElement
+{
+	void operator() (const elementType& element) const
+	{
+		cout << element << ' ';
+	}
+};
+		\end{verbatim}
+
+	\item THe \textbf{function object} displays an \textbf{object} \verb|element| on the screen using \verb|cout| and is typically used in algos such as \verb|std::for_each()|:
+
+		\begin{verbatim}
+// display every integer contained in a vector
+for_each (numsInVec.cbegin(),		// start of range
+		numsInVec.cend(),			// end of range
+		DisplayElement<int>());		// unary function object
+		\end{verbatim}
+\end{itemize}
+
+\pbreak
+
+\begin{itemize}
+	\item A \textbf{lambda expression} compacts the entire code including the \textbf{definition} of the function object into three lines:
+
+		\begin{verbatim}
+for_each (numsInVec.cbegin(),		// start of range
+		numsInVec.cend(),			// end of range
+		[](const int& element) { cout << element << ' '; });
+		\end{verbatim}
+
+	\item When the compiler sees the \textbf{lambda expression}, in this case
+		\begin{verbatim}
+			[](const int& element) { cout << element << ' '; }
+		\end{verbatim}
+
+	it automatically \textbf{expands} this expression into a representation that is similar to \verb|struct DisplayElement<int>|:
+		\begin{verbatim}
+struct NoName
+{
+	void operator() (const int& element) const
+	{
+		cout << element << ' ';
+	}
+};
+		\end{verbatim}
+
+	\item Note: \textbf{lambda expressions} are also called \vocab{lambda functions}.
+\end{itemize}
+
+\newpage
+
+\subsection{How to Define a Lambda Expression}
+\begin{itemize}
+	\item The \textbf{definition} of a \textbf{lambda expression} has to start with \textbf{square brackets []}  
+	\item These \textbf{brackets} tell the compiler that the \textbf{lambda expression} has started.
+	\item They are followed by a \textbf{parameter list}, which is the \underline{same} as the \textbf{parameter list} you would supply your implementation of \verb|operator()| if you were not using a \textbf{lambda expression}.
+\end{itemize}
+
+\newpage
+\subsection{Lambda Expressions for a Unary Function}
+\begin{itemize}
+	\item The \textbf{lambda} version of a \textbf{unary operator(Type)} that takes \textbf{one parameter} would be the following:
+		\begin{verbatim}
+			[](Type paramName) { // lambda expression code here; }
+		\end{verbatim}
+
+	\item Note that you can pass the \textbf{parameter by reference} if you so wish:
+		\begin{verbatim}
+			[](Type& paramName) { // lambda expression code here; }
+		\end{verbatim}
+
+	\item \fbox{\textbf{Listing 22.1} for\_each() and lambda expression instead of function object}
+\end{itemize}
+
+
+\newpage
+
+\subsection{Lambda Expression for a Unary Predicate}
+\begin{itemize}
+	\item A \vocab{predicate} helps make decisions.
+
+	\item A \vocab{unary predicate} is a \textbf{unary expression} that returns a \verb|bool|: true or false.
+
+	\item \textbf{Lambda expressions} can \textbf{return values too}.
+
+	\item Example: \textbf{lambda expression} that returns true for even nums:
+		\begin{verbatim}
+			[](int num) { return (n & 1) == 0; }
+		\end{verbatim}
+
+	\item The nature of the \textbf{return value} in this case tells the compiler that the \textbf{lambda expressions} returns a \verb|bool|
+
+	\item You can use a \textbf{lambda expression} that is a \textbf{unary predicate} in algorithms, such as \verb|std::find_if()|, to fine even numbers in a collection.
+
+	\item \fbox{\textbf{Listing 22.2} std::fine\_if()}
+\end{itemize}
+
+\newpage
+
+\subsection{Lambda Expression with State via Capture Lists [...]}
+\begin{itemize}
+	\item In \textbf{Listing 22.2} we created a \textbf{unary predicate} that returned true if an int was even.
+
+	\item What if we want to make it more generic to see if the int is divisible by a divisor of the user's choice---you need to maintain that "state" (the divisor) in the expression?
+
+		\begin{verbatim}
+int divisor = 3;	// initi value
+auto element = find_if(numsInVec.cbegin(),
+			numsInVec.cend(),
+			[divisor](int dividend) { return (dividend % divsor) == 0; });
+
+			or
+
+int divisor = userChoice;
+
+auto pred = [divisor](int x) {
+    return x % divisor == 0;
+};
+		\end{verbatim}
+
+		\begin{itemize}
+			\item \textbf{State} in a lambda means the values it \textbf{captures} from its \underline{\textbf{surrounding scope.}}
+    \item In this example, the lambda captures \texttt{divisor}:
+    \begin{verbatim}
+[divisor](int dividend) {
+    return (dividend % divisor) == 0;
+}
+    \end{verbatim}
+    \item The captured \texttt{divisor} is stored inside the lambda, allowing it to remember the user's chosen divisor each time it is called.
+\end{itemize}
+
+	\item \fbox{\textbf{Listing 22.3} Lambda Expressions that hold state}
+
+\end{itemize}
+
+\newpage
+\subsection{The Generic Syntax of Lambda Expressions}
+\begin{itemize}
+	\item A \textbf{lambda expressions} always starts with \textbf{square brackets []} and can be configured to take \textbf{multiple state variables} separated using commas in a \textbf{capture list [...]}:
+
+		\begin{verbatim}
+			[stateVar1, stateVar2](Type& param) { // lambda code here; }
+		\end{verbatim}
+
+	\item If you want to ensure that these \textbf{state variables} are \textbf{\underline{modified within a lambda}}, you add keyword \verb|mutable|:
+		\begin{verbatim}
+			[stateVar1, stateVar2](Type& param) mutuable { // lambda code here; }
+		\end{verbatim}
+
+		\pbreak
+
+	\item Note here the variables supplied in the \textbf{capture list []} are \textbf{modifiable} within the lambda, but changes \underline{do not take effect outside of it}.
+
+	\item If you want to ensure that modifications made to the \textbf{state variables} within the lambda are valid \textbf{outside it}, then you use \fbox{\textbf{references}}:
+		\begin{verbatim}
+			[&stateVar1, &stateVar2](Type& param) { // lambda code here; }
+		\end{verbatim}
+
+		\pbreak
+
+	\item \textbf{Lambdas} can take \textbf{multiple input parameters}, separated by commas:
+		\begin{verbatim}
+			[stateVar1, stateVar2](Type1& var1, Type2& var2) { // lambda code here; }
+		\end{verbatim}
+
+		\pbreak
+
+	\item If you want to mention the \textbf{return type} and not leave the disambiguation to the compiler use the $\leftarrow$:
+		\begin{verbatim}
+			[stateVar1, stateVar2](Type1 var1, Type2 var2) -> ReturnType { // lambda code here; }
+		\end{verbatim}
+
+		\pbreak
+
+	\item Finally, the \textbf{compound statement {}} can hold multiple statements sep by a \verb|;| (obviously)
+
+		\begin{verbatim}
+			[stateVar1, stateVar2] (Type1 var1, Type2 var2) -> ReturnType
+			{
+				Statement 1;
+				Statement 2;
+				return (value or expression);	
+			}
+		\end{verbatim}
+
+	\item So if you lambda spans multiple lines, you are \textbf{required} to supply an \textbf{explicit return type}.
+\end{itemize}
+
+\pbreak
+
+\begin{itemize}
+	\item Thus, a \textbf{lambda function} is a compact, fully functional replacement of a \textbf{function object} such as the following:
+		\begin{verbatim}
+		template<typename Type1, typename Type2>
+		struct IsNowTooLong
+		{
+			// state variables
+			Type1 var1;
+			Type2 var2;
+
+			// constructor
+			IsNowTooLong(const Type1& in1, Type2& in2) : var1(in1), var2(in2) {};
+
+			// the actual purpose
+			ReturnType operator()
+			{
+				Statement 1;
+				Statement 2;
+				return (value or expression);
+			}
+		};
+		\end{verbatim}
+\end{itemize}
+
+\newpage
+
+\subsection{Lambda Expression for a Binary Function}
+\begin{itemize}
+	\item a \vocab{binary function} takes \textbf{two parameters} and optionally returns a value.
+
+	\item a \vocab{lambda expression} equivalent of the same would be
+
+		\begin{verbatim}
+			[...](Type1& param1Name, Type& param2Name) { // lambda code here; }
+		\end{verbatim}
+
+	\item \fbox{\textbf{Listing 22.4} Lambda Expression as a Binary Function}
+\end{itemize}
+
+\newpage
+
+\subsection{Lambda Expression for a Binary Predicate}
+\begin{itemize}
+	\item A \textbf{binary function} that returns \verb|true| or \verb|false| to help make a decision is called a \verb|binary predicate|.
+
+	\item These \textbf{\fbox{predicates}} find use in sort algos, such as \verb|std::sort()|, that invoke the \textbf{binary predicate} for any two values in a container to know which one should be placed after the other.
+
+	\item Generic syntax of a \textbf{binary predicate} is:
+		\begin{verbatim}
+			[...](Type1& param1Name, Type2& param2Name) { // return bool expression; }
+		\end{verbatim}
+
+	\item \fbox{\textbf{Listing 22.5} Lambda Expression as a Binary Predicate}
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+	\item \textbf{DO} remember that \textbf{lambda expressions} always start with \verb|[]| or \verb|[state1, state2, ...]|
+	\item \textbf{DO} remember that unless specified, \textbf{state variables} supplied within a \textbf{capture list} \verb|[]| are \textbf{\underline{not modifiable}} unless you use the keyword \verb|mutable|
+
+	\pbreak
+
+\item \textbf{DON'T} forget that \textbf{lambda expressions} are \textbf{unnamed representations} of a \textbf{class} or a \textbf{struct} with \textbf{operator()}.
+\item \textbf{DON'T} forget to use \verb|const| corrent parameter types when writing your \textbf{lambda expressions}:
+	\begin{verbatim}
+		[](const T& value) { // code; }
+	\end{verbatim}
+\item \textbf{DON'T} forget to explicitly mention return type when \textbf{lambda expressions} includes \textbf{multiple statements} within the statement block {}
+\item \textbf{DON'T} choose lambda expressions over a \textbf{function object} when the lambda gets extremely long and spans multiple statements, for these are redefined in evrey use and do not assist code resuability.
+\end{itemize}
+
 \end{document}
 

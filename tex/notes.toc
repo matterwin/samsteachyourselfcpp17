@@ -230,3 +230,12 @@
 \contentsline {subsubsection}{\numberline {14.5.6}Template Classes and 'static' Members}{281}{subsubsection.14.5.6}%
 \contentsline {subsubsection}{\numberline {14.5.7}Variable Templates, Also Called Variadic Templates}{283}{subsubsection.14.5.7}%
 \contentsline {subsubsection}{\numberline {14.5.8}Using 'static\_assert' to Perform Compile-Time Checks}{285}{subsubsection.14.5.8}%
+\contentsline {section}{\numberline {15}Lambda Expressions}{288}{section.15}%
+\contentsline {subsection}{\numberline {15.1}What is a Lambda Expression?}{288}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}How to Define a Lambda Expression}{290}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Lambda Expressions for a Unary Function}{291}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}Lambda Expression for a Unary Predicate}{292}{subsection.15.4}%
+\contentsline {subsection}{\numberline {15.5}Lambda Expression with State via Capture Lists [...]}{293}{subsection.15.5}%
+\contentsline {subsection}{\numberline {15.6}The Generic Syntax of Lambda Expressions}{294}{subsection.15.6}%
+\contentsline {subsection}{\numberline {15.7}Lambda Expression for a Binary Function}{296}{subsection.15.7}%
+\contentsline {subsection}{\numberline {15.8}Lambda Expression for a Binary Predicate}{297}{subsection.15.8}%
