@@ -11264,5 +11264,580 @@ auto pred = [divisor](int x) {
 \item \textbf{DON'T} choose lambda expressions over a \textbf{function object} when the lambda gets extremely long and spans multiple statements, for these are redefined in evrey use and do not assist code resuability.
 \end{itemize}
 
+\newpage
+\section{Understanding Smart Pointers}
+\begin{itemize}
+	\item C++ can use \textbf{smart pointers} when managing memory on the heap (or free store).
+\end{itemize}
+
+\pbreak
+
+\subsection{What are Smart Pointers?}
+\begin{itemize}
+	\item A \vocab{smart pointer} in C++ is a \textbf{class} with \textbf{overloaded operators}, which \underline{behaves} like a conventional pointer.
+
+	\item Yet, it supplies additional value  by ensuring proper and timely \textbf{destruction} of \textbf{dynamically allocated data} and facilitates a \textbf{well-defined} object lifecycle.
+\end{itemize}
+
+\pbreak
+
+\subsubsection{The Problem with Using Conventional (Raw) Pointers}
+\begin{itemize}
+	\item C++ supplies full flexibility to the programmer in memory allocation, deallocation, and mangement.
+
+	\item One side of this, it makes C++ a powerful language; the other side: it allows the programmer to create memory-related problems, such us memory leaks, when dynamically allocated objects are not correctly released.
+
+	\item Example:
+		\begin{verbatim}
+SomeClass* ptrData = anObject.GetData();
+	// so here should caller or callee invoke delete/free here?
+	// no idea.
+ptrData->DoSomething();
+		\end{verbatim}
+
+	\item This can easily be solved, but it can also easily cause errors.
+\end{itemize}
+
+\newpage
+\subsubsection{How Do Smart Pointers Help?}
+\begin{itemize}
+	\item The programmer can choose a smarter way to allocate and manage dynamic data by adopting the use of \textbf{smart pointers}:
+		\begin{verbatim}
+smart_pointer<SomeClass> spData = anObject.GetData();
+
+// use a smart pointer like a conventional pointer!
+spData->Display();
+(*spData).Display();
+
+// don't have to worry about deallocation
+// (the smart pointer's destructor does it for you!)
+		\end{verbatim}
+
+	\item Thus, \textbf{smart pointers} behave like \textbf{conventional (or raw) pointers} but supply useful features via their \underline{\textit{\textbf{overloaded operations}}} and \underline{\textbf{\textit{destructors}}} to ensure that \textbf{dynamically allocated data} is destroyed in a timely manner.
+\end{itemize}
+
+\newpage
+\subsection{How Are Smart Pointers Implemented?}
+
+\begin{itemize}
+	\item Smart pointers, like above, can mimic raw pointers b/c of their \textbf{overloaded derefencing operator (*)} and \textbf{member selection operator }(\verb|->|).
+	\item \textbf{Operator overloading} was discussed in Lesson 12.
+
+	\item Additionally, almost all good \textbf{smart pointer classes} are \underline{\textbf{template classes}} that containa generic implementation of their functionality (so that you can manage a type of your choice on the heap).
+
+	\item Being \textbf{templates}, they are versatile and can be \textbf{specialized} to manage an \textbf{object} of a \textbf{type} of your choice.
+
+	\item \fbox{\textbf{Listing 26.1} Minimal Essential Components of a Smart Pointer Class}
+
+		\pbreak
+
+	\item The listing displays the implemention of the \textbf{two operators} * and \verb|->| and assists in having this template class behave like a conventional pointer.
+
+	\item For instance, you would use the \textbf{smart pointer} on an \textbf{object} of type \verb|class Tuna|, you would instantiate it like this:
+		\begin{verbatim}
+smart_pointer<Tuna> smartTuna(new Tuna);
+smart_pointer->Swim();
+(*smart_pointer).Swim();
+		\end{verbatim}
+
+	\item This is a very minimal example and don't have great benefits over a conventional pointer, however, it's nice to have the \textbf{constructor} accept a pointer that is saved as the \textbf{internal pointer object} in the \textbf{smart pointer class}.
+
+		And the \textbf{destructor} automatically freeing this pointer for \textbf{automatic memory release}.
+
+\end{itemize}
+		\begin{tcolorbox}
+			\begin{itemize}
+				\item The implementation that makes a \textbf{smart pointer} really "smart" is the implementation of the \textbf{copy constructor}, the \textbf{assignment operator}, and the \textbf{destructor}.
+
+				\item They determine the behavior of the \textbf{smart pointer object} when it is \textbf{passed across functions}, when is \textbf{assigned}, or when it \textbf{goes out of scope} (that is, gets \textbf{destructed})
+
+				\item So, before looking at a \textbf{complete smart pointer implementation}, you should understand some \textbf{smart pointer types}.
+			\end{itemize}
+		\end{tcolorbox}
+\newpage
+
+\subsection{Types of Smart Pointers}
+\begin{itemize}
+	\item The \textbf{management} of the \textbf{memory resource} (that is, the \textbf{\underline{ownership model implemented}}) is what sets \textbf{smart pointer classes} apart.
+
+	\item \textbf{Smart pointers} decide what they do with the resource when they are \textbf{copied} and \textbf{assigned} to.
+
+	\item Classification of \textbf{smart pointers} is actually a classification of their \textbf{memory resource management} strategies. These are
+		\begin{itemize}
+		\item Deep copy
+		\item Copy on Write (COW)
+		\item Reference counted
+		\item Reference linked
+		\item Destructive copy
+		\end{itemize}
+
+	\item Let's look into these before studying C++'s \verb|std::unique_ptr| (just an example of one of C++'s smart pointers)
+\end{itemize}
+
+\newpage
+\subsubsection{Deep Copy}
+\begin{itemize}
+	\item In a \textbf{smart pointer} that implements \textbf{deep copy}, every \textbf{smart pointer instance} holds a \textbf{complete copy} of the \textbf{object} that is begin managed.
+
+	\item Whenever the \textbf{smart pointer} is \textbf{copied}, the \textbf{object pointed to} is \underline{also \textbf{copied}} (thus, \textbf{deep copy}).
+
+	\item When the \textbf{smart pointer} goes out of scope, it \textbf{releases the memory} it points to (via the \textbf{destructor})
+
+		\pbreak
+
+	\item Although the \textbf{deep-copy-based smart pointer} does not seem to render any value over \textbf{passing objects by values}, its advantage becomes apparent in the treatment of \textbf{polymorphic objects} as seen in the following, where it can \textbf{avoid \vocab{slicing}}.
+
+		\begin{verbatim}
+// examaple of Slicing when passing polymorphic objects by value 
+// fish is a base class for Tuna and Carp, Fish::Swim() is virtual
+void MakeFishSwim(Fish aFish)	// note parameter type
+{
+	aFish.Swim();	// virtual function
+}
+
+// ... some function
+Carp freshWaterFish;
+MakeFishSwim(freshWaterFish);	// carp will be 'sliced' to Fish
+// slicing: only the Fish part of Carp is sent to MakeFishSwim()
+
+Tuna marineFish;
+MakeFishSwim(marineFish);	// slicing again
+
+// so its an issue cause passing a polymorphic object by value 
+// slices off the derived-class portion, 
+// so polymorphism is lost and virtual functions 
+// behave as if the object were only the base class.
+		\end{verbatim}
+
+		\pbreak
+		
+	\item \textbf{Slicing} issues are resolved when the programmer chooses a \textbf{deep-copy smart pointer}, as shown in \fbox{\textbf{Listing 26.2}}
+
+	\item \verb|deepcopy_smart_ptr| implements a \textbf{copy constructor} that allows a \textbf{deep copy} of the \textbf{polymorphic object} via a \verb|Clone()| function that the \textbf{class} needs to implement.
+
+	\item Similarly, it implements a \textbf{copy assignment operator}.
+
+	\item Again, for the sake of simplicity, it is taken for granted in this ex that the \textbf{virtual function} implemented by the \textbf{base class} \verb|Fish| is called \verb|Clone()|.
+
+	\item Typically \textbf{smart pointers} that implement \textbf{deep-copy models} have this function supplied either as a \textbf{template parameter} or a \textbf{function object}.
+
+		\pbreak
+
+	\item Thus, when the \textbf{smart pointer} itself is passed as a \textbf{pointer} to \textbf{base class} type \verb|Fish|:
+		\begin{verbatim}
+deepcopy_smart_ptr<Carp> freshWaterFish(new Carp);
+MakeFishSwim(freshWaterFish);	// carp will not be 'sliced'
+		\end{verbatim}
+
+		\pbreak
+
+	\item The \textbf{deep copy} implemented in the \textbf{smart pointer's constructor} kicks in to ensure that the \textbf{object} being \textbf{passed} is \underline{not sliced}, even though syntactically only the \textbf{base part} of it is required by the destination function \verb|MakeFishSwim()|
+
+		\pbreak
+
+	\item The disadvantage of the \textbf{deep-copy-based} mechanism is performance.
+	\item Instead the programmer may want to pass a \textbf{base type pointer (conventional pointer, Fish*)} to functions such as \verb|MakeFishSwim()|
+
+\end{itemize}
+
+\newpage
+\subsubsection{Copy on Write Mechanism}
+\begin{itemize}
+	\item \vocab{Copy on Write (COW)} attempts to \textbf{optimize performance} of \textbf{deep-copy smart pointers} by \textbf{sharing pointers} until the first attemp at writing to the \textbf{object} is made.
+
+	\item One the \textbf{first attempt} at invoking a \textbf{non-const function}, a \fbox{\textbf{COW pointer}} typically \textbf{creates a copy} of the \textbf{object} on which the \textbf{non-const function} is invoked, whereas other \textbf{instances} of the \textbf{pointer} \underline{continue \textbf{sharing} the \textbf{source object}}.
+
+		\pbreak
+
+	\item \textbf{COW} has its fair share of fans.
+	\item For those that swear by \textbf{COW}, implementing \textbf{operators (*)} and \textbf{(}\verb|->|\textbf{)} in their \verb|const| and non-\verb|const| versions is key to the functionality of the \textbf{COW pointer}.
+
+	\item The latter \textbf{creates a copy}.
+
+		\pbreak
+
+	\item Know your shit or you will copy too little or too much
+\end{itemize}
+
+\newpage
+\subsubsection{Reference-Counted Smart Pointers}
+\begin{itemize}
+	\item \textbf{Reference counting} in general is a mechanism that keeps a count of the \textbf{number of users} of an \textbf{object}.
+
+	\item When the count reduces to \textbf{zero}, the \textbf{object is released}.
+
+	\item So, \textbf{reference counting} makes a very good mechanism for \textbf{sharing objects} without having to \textbf{copy} them.
+
+		\pbreak
+
+	\item Such \textbf{smart pointers}, when \textbf{copied}, need to have the \textbf{reference count} of the \textbf{object} in question \textbf{incremented}.
+
+	\item There are at least \textbf{two} popular ways to keep this \textbf{count}:
+		\begin{enumerate}
+			\item Reference count maintained in the \textbf{object being pointed to}.
+			\item Reference count maintained by the \textbf{pointer class} in a \textbf{shared object}.
+		\end{enumerate}
+\end{itemize}
+
+\pbreak
+
+\begin{itemize}
+	\item The \textbf{first variant} where the \textbf{reference count} is maintained in the \textbf{object} is called \vocab{intrusive reference counting} because the \textbf{object} needs to be modified.
+
+	\item The \textbf{object} in this case maintains, increments, and supplies the \textbf{reference count} to any \textbf{smart pointer class} that magnages it.
+
+	\item Incidentally, this is the approach chosen by \textbf{COM}.
+
+		\pbreak
+
+	\item The \textbf{second variant} where the \textbf{reference count} is maintained in a \textbf{shared object} is a mechanism where the \textbf{smart pointer class} can keep the reference count on the free store (a dynamically allocated integer, for example) and \textbf{when copied}, the \textbf{copy constructor} increments this value.
+\end{itemize}
+
+\pbreak
+
+\begin{itemize}
+	\item Therefore, the \textbf{reference-counting} mechanism makes it pertinent that the programmer works with the \textbf{smart pointers} only when using the object.
+
+	\item A \textbf{smart pointer} managing the \textbf{object} and a \textbf{raw pointer} pointing to it is a bad idea because the \textbf{smart pointer} (smartly) releases the object when the count maintained by it goes down to zero, but the \textbf{raw pointer} continues poiting to the part of the memory that no longer belongs to your application.
+
+	\item Similarly, \textbf{reference counting} can cause issues peculiar to their situation: \textbf{2 objects} that \textbf{hold a pointer to each other} are never released b/c their \textbf{cyclic dependency} holds their reference counts at a minimum of 1.
+\end{itemize}
+
+\newpage
+\subsubsection{Reference-Linked Smart Pointers}
+\begin{itemize}
+	\item \vocab{Reference-linked smart pointers} are ones that don't proactively count th enumber of \textbf{references} of using the \textbf{object}; rather, they just need to know when the \textbf{number comes down to zero} so that the \textbf{object} can be released.
+
+	\item They are called \vocab{reference-linked} because their implementation is based on a \textbf{double-linked list}.
+
+	\item When a \textbf{new smart pointer} is created by \textbf{copying} an existing one, it is \textbf{appended} to the list.
+
+	\item When a \textbf{smart pointer} goes \textbf{out of scope} or is \textbf{destroyed}, the destructor \textbf{de-indexes} the \textbf{smart pointer} from the list.
+
+\item \textbf{Reference counting} also suffers from the problem caused by \textbf{cylic dependency}, as applicable to \textbf{reference-counted pointers}.
+\end{itemize}
+
+\newpage
+\subsubsection{Destructive Copy}
+\begin{itemize}
+\item \vocab{Destructive copy} is a mechanism where a \textbf{smart pointer}, when \textbf{copied}, transfers \textbf{complete ownership} of the object being handled to the destination and resets itself:
+
+	\begin{verbatim}
+destructive_copy_smartptr<SampleClass> smartPtr(new SampleClass());
+
+SomeFunc(smartPtr);	// ownership transferred to SomeFunc
+// don't use smartPtr in the caller any more!
+	\end{verbatim}
+
+\item Although this mechanism is obviously intuitive to use, the advantage supplied by \textbf{destructive copy smart pointers} is that they ensure that at any point in time, \textbf{only one active pointer points} to an \textbf{object}.
+
+\item So, they make good mechanisms for \textbf{returning pointers} from functions, and are of use in scenarios where you can use their \textbf{"destructive"} properties to your advantage.
+
+\item The implementation of \textbf{destructive copy pointers} deviate from standard, recommended C++ programming techniques, as shown in \textbf{Listing 26.3}.
+
+\item \fbox{\textbf{Listing 26.3} A Sample Destructive Copy Smart Pointer}
+\end{itemize}
+
+\pbreak
+
+
+\begin{tcolorbox}
+	\begin{itemize}
+		\item The \textbf{copy constructor} and \textbf{copy assignment operators} that are critical to the implementation of \textbf{destructive copy smart pointers} as shown in \textbf{Listing 26.3} also attract maximum criticism.
+
+		\item Unlike most C++ classes, this \textbf{smart pointer class} \underline{cannot} have the \textbf{copy constructor} and \textbf{assignment operator} acept \verb|const| \textbf{references}, as it needs to invalidate the \textbf{source} after copying it.
+
+		\item This is not only a deviation from traditional copy-constructor and assignment-operator semantics, but also makes using the smart pointer class counter intuitive.
+
+		\item Few expect the \textbf{copy source} or the \textbf{assignment source} to be damaged after a \textbf{copy} or \textbf{assignment} step. counter intuitive.
+
+		\pbreak
+		
+	\item The fact that such \textbf{smart pointers destroy} the \textbf{source} also makes them unsuitable for the use in the \textbf{STL containers}, such as \verb|std::vector| or any other dynamic collection class that you might use.
+
+	\item These \textbf{containers} need to \textbf{copy} your content internally and end up invalidating the pointers.
+
+		\pbreak
+
+	\item So, for more than one reason, you are \textbf{advised to avoid using \underline{destructive copy smart pointers}} in your programs.
+	\end{itemize}
+\end{tcolorbox}
+
+\newpage
+\subsubsection{Using std::unique\_ptr}
+\begin{itemize}
+	\item \verb|std::unique_ptr| \underline{does not allow} \textbf{copy} or \textbf{assignment}
+	\item Use \verb|#include <memory>| to use \verb|std::unique_ptr|
+
+\item The \verb|std::unique_ptr| is a \textbf{simple smart pointer} similar to what's shown in \textbf{Listing 26.1}, but with a \textbf{private copy constructor} and \textbf{assignment operator} to \underline{disallow copy} via passing as an \textbf{argument to a function by value} or \textbf{copy via assignment}
+
+\item \fbox{\textbf{Listing 26.4} Using std::unique\_ptr}
+\end{itemize}
+
+\newpage
+\begin{tcolorbox}
+	\begin{itemize}
+		\item \textbf{Listing 26.4} demonstrated that the \verb|unique_ptr| \textbf{\underline{doesn't support copy}}:
+
+			\begin{verbatim}
+copySmartFish = smartFish;		// error: operator= is private
+			\end{verbatim}
+
+		\item It however \textbf{does support \fbox{move semantics}}.
+
+			Therefore, an option that would work is
+
+			\begin{verbatim}
+unique_ptr<Fish> sameFish(std::move(smartFish));
+// smartFish is empty henceforth
+			\end{verbatim}
+
+		\item If you were ever to write a \textbf{lambda expression} that would need to capture an \verb|unique_ptr|, then you would use \verb|std::move()| in your \textbf{lambda capture} as supported by C++14.
+
+			\pbreak
+
+			\begin{verbatim}
+std::unique_ptr<char> alphabet(new char);
+*alphabet = 's';
+auto lambda = [capture = std::move(alphabet)]() 
+{ std::cout << *capture << endl; }
+
+// alphabet is empty henceforth as contents have been 'moved'
+
+lambda();
+			\end{verbatim}
+	\end{itemize}
+\end{tcolorbox}
+
+\newpage
+\subsection{Smart pointers std::}
+\subsubsection{std::unique\_ptr}
+\begin{itemize}
+    \item A smart pointer that owns a dynamically allocated object exclusively.
+    \item Automatically deletes the object when the \texttt{std::unique\_ptr} goes out of scope (RAII).
+    \item Cannot be copied, only moved, ensuring a single owner at all times.
+    \item Commonly created with \texttt{std::make\_unique} (C++14+).
+    \item Useful for managing resources without manual \texttt{delete} calls.
+
+    \begin{verbatim}
+#include <iostream>
+#include <memory>
+
+int main() {
+    auto ptr = std::make_unique<int>(42);
+
+    std::cout << *ptr << std::endl;   // 42
+
+    // Ownership can be transferred
+    auto ptr2 = std::move(ptr);
+
+    if (!ptr)
+        std::cout << "ptr is now empty\n";
+
+    std::cout << *ptr2 << std::endl;  // 42
+}
+    \end{verbatim}
+
+    \item Managing a user-defined object:
+
+    \begin{verbatim}
+#include <iostream>
+#include <memory>
+
+class Dog {
+public:
+    Dog() { std::cout << "Dog created\n"; }
+    ~Dog() { std::cout << "Dog destroyed\n"; }
+
+    void bark() { std::cout << "Woof!\n"; }
+};
+
+int main() {
+    auto dog = std::make_unique<Dog>();
+    dog->bark();
+} // Dog is automatically destroyed here
+    \end{verbatim}
+
+	\item Transferring ownership with \texttt{std::move()}:
+
+\begin{verbatim}
+#include <iostream>
+#include <memory>
+
+void takeOwnership(std::unique_ptr<int> p) {
+    std::cout << *p << std::endl;
+} // p is destroyed here
+
+int main() {
+    auto ptr = std::make_unique<int>(100);
+
+    takeOwnership(std::move(ptr));
+
+    if (!ptr)
+        std::cout << "ptr no longer owns the object\n";
+}
+\end{verbatim}
+\end{itemize}
+
+\newpage
+\subsubsection{std::shared\_ptr}
+\begin{itemize}
+    \item A smart pointer that allows multiple owners of the same dynamically allocated object.
+    \item Uses reference counting to track how many \texttt{std::shared\_ptr}s own the object.
+    \item The object is automatically deleted when the last owning \texttt{std::shared\_ptr} is destroyed or reset.
+    \item Can be copied freely, increasing the reference count.
+    \item Commonly created with \texttt{std::make\_shared}, which is more efficient than using \texttt{new}.
+
+    \begin{verbatim}
+#include <iostream>
+#include <memory>
+
+int main() {
+    auto ptr1 = std::make_shared<int>(42);
+    auto ptr2 = ptr1;    // Shared ownership
+
+    std::cout << *ptr1 << std::endl;          // 42
+    std::cout << ptr1.use_count() << std::endl; // 2
+}
+    \end{verbatim}
+
+    \item Managing a user-defined object:
+
+    \begin{verbatim}
+#include <iostream>
+#include <memory>
+
+class Dog {
+public:
+    Dog() { std::cout << "Dog created\n"; }
+    ~Dog() { std::cout << "Dog destroyed\n"; }
+
+    void bark() { std::cout << "Woof!\n"; }
+};
+
+int main() {
+    auto dog1 = std::make_shared<Dog>();
+    auto dog2 = dog1;   // Both point to the same Dog
+
+    dog1->bark();
+
+    std::cout << dog1.use_count() << std::endl; // 2
+} // Dog destroyed after both pointers go out of scope
+    \end{verbatim}
+
+    \item Sharing ownership by passing to a function:
+
+\begin{verbatim}
+#include <iostream>
+#include <memory>
+
+void printValue(std::shared_ptr<int> p) {
+    std::cout << *p << std::endl;
+    std::cout << p.use_count() << std::endl;
+}
+
+int main() {
+    auto ptr = std::make_shared<int>(100);
+
+    std::cout << ptr.use_count() << std::endl; // 1
+
+    printValue(ptr);   // Copies the shared_ptr
+
+    std::cout << ptr.use_count() << std::endl; // 1
+}
+\end{verbatim}
+
+    \item Releasing ownership:
+
+\begin{verbatim}
+#include <iostream>
+#include <memory>
+
+int main() {
+    auto ptr1 = std::make_shared<int>(10);
+    auto ptr2 = ptr1;
+
+    std::cout << ptr1.use_count() << std::endl; // 2
+
+    ptr2.reset();   // Releases one owner
+
+    std::cout << ptr1.use_count() << std::endl; // 1
+}
+\end{verbatim}
+
+\end{itemize}
+
+\newpage
+\subsubsection{std::weak\_ptr}
+\begin{itemize}
+    \item A smart pointer that observes an object managed by a \texttt{std::shared\_ptr}.
+    \item Does not own the object and does not increase the reference count.
+    \item Used to prevent circular references between \texttt{std::shared\_ptr}s.
+    \item Must be converted to a \texttt{std::shared\_ptr} using \texttt{lock()} before accessing the object.
+    \item Can check whether the object still exists using \texttt{expired()}.
+
+    \begin{verbatim}
+#include <iostream>
+#include <memory>
+
+int main() {
+    auto shared = std::make_shared<int>(42);
+    std::weak_ptr<int> weak = shared;
+
+    std::cout << shared.use_count() << std::endl; // 1
+
+    if (auto ptr = weak.lock()) {
+        std::cout << *ptr << std::endl; // 42
+    }
+}
+    \end{verbatim}
+
+    \item Detecting when an object has been destroyed:
+
+    \begin{verbatim}
+#include <iostream>
+#include <memory>
+
+int main() {
+    std::weak_ptr<int> weak;
+
+    {
+        auto shared = std::make_shared<int>(100);
+        weak = shared;
+    } // shared is destroyed here
+
+    if (weak.expired()) {
+        std::cout << "Object no longer exists\n";
+    }
+}
+    \end{verbatim}
+
+    \item Safely accessing the object with \texttt{lock()}:
+
+\begin{verbatim}
+#include <iostream>
+#include <memory>
+
+void printValue(std::weak_ptr<int> weak) {
+    if (auto ptr = weak.lock()) {
+        std::cout << *ptr << std::endl;
+    } else {
+        std::cout << "Object has been destroyed\n";
+    }
+}
+
+int main() {
+    auto shared = std::make_shared<int>(50);
+
+    printValue(shared);
+
+    shared.reset();
+
+    printValue(shared);
+}
+\end{verbatim}
+
+\end{itemize}
+
 \end{document}
 

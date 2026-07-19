@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.1)  15 JUL 2026 00:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.1)  19 JUL 2026 14:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1413,7 +1413,17 @@ Overfull \hbox (7.71727pt too wide) in paragraph at lines 11238--11239
 []\OT1/cmr/m/n/10 A \OT1/cmr/bx/n/10 bi-nary func-tion \OT1/cmr/m/n/10 that re-turns [][]\OT1/cmtt/m/n/10 true []\OT1/cmr/m/n/10 or [][]\OT1/cmtt/m/n/10 false []\OT1/cmr/m/n/10 to help make a de-ci-sion is called a [][]\OT1/cmtt/m/n/10 binary predicate[]\OT1/cmr/m/n/10 . 
  []
 
-[297] [298] (./notes.aux)
+[297] [298] [299] [300] [301] [302] [303] [304] [305]
+Overfull \hbox (77.7954pt too wide) in paragraph at lines 11485--11486
+[]\OT1/cmr/m/n/10 The \OT1/cmr/bx/n/10 first vari-ant \OT1/cmr/m/n/10 where the \OT1/cmr/bx/n/10 ref-er-ence count \OT1/cmr/m/n/10 is main-tained in the \OT1/cmr/bx/n/10 ob-ject \OT1/cmr/m/n/10 is called []
+ []
+
+[306] [307]
+Underfull \hbox (badness 10000) in paragraph at lines 11562--11563
+[]\OT1/cmr/m/n/10 So, for more than one rea-son, you are \OT1/cmr/bx/n/10 ad-vised to avoid us-ing
+ []
+
+[308] [309] [310] [311] [312] [313] [314] [315] [316] (./notes.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1427,21 +1437,21 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `notes.out' has not changed.
-(rerunfilecheck)             Checksum: 0C0859E0207007891D55D0B0859F2031;52678.
+(rerunfilecheck)             Checksum: 93356D7042D09A39E463087123CC6835;55779.
  ) 
 Here is how much of TeX's memory you used:
- 24993 strings out of 469515
- 467873 string characters out of 5470808
- 868820 words of memory out of 5000000
- 52641 multiletter control sequences out of 15000+600000
+ 25048 strings out of 469515
+ 468691 string characters out of 5470808
+ 868840 words of memory out of 5000000
+ 52660 multiletter control sequences out of 15000+600000
  636668 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,9n,118p,607b,890s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on notes.pdf (298 pages, 631276 bytes).
+Output written on notes.pdf (316 pages, 657885 bytes).
 PDF statistics:
- 2752 PDF objects out of 2984 (max. 8388607)
- 2396 compressed objects within 24 object streams
- 642 named destinations out of 1000 (max. 500000)
- 1829 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2919 PDF objects out of 2984 (max. 8388607)
+ 2543 compressed objects within 26 object streams
+ 678 named destinations out of 1000 (max. 500000)
+ 1957 words of extra memory for PDF output out of 10000 (max. 10000000)
 
